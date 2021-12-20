@@ -14,11 +14,10 @@ set script_dir [file dirname [info script]]
 set repo_dir [file dirname $script_dir]
 # choose an unused project name (note that `close_project -delete` can be used to clean up existing projects)
 set project_name "project"
+set project_dir [file join $script_dir "proj"]
 set idx 0
-while {[file exists [file join $script_dir ${project_name}_${idx}]]} {incr idx}
+while {[file exists [file join $project_dir ${project_name}_${idx}]]} {incr idx}
 set project_name ${project_name}_${idx}
-set project_dir [file join $script_dir ${project_name}]
-
 
 set part [get_property PART_NAME $board]
 set hierarchy_to_test [lindex $argv [expr [llength $argv] - 1]]
@@ -51,9 +50,12 @@ launch_runs impl_1 -to_step write_bitstream -jobs 12
 # only block if not using the gui
 if {$block_flag} {
 	wait_on_run impl_1
+	# export finished xsa to the current working directory
+	set idx 0
+	while {[file exists ${hierarchy_to_test}_${wrapper_module}_${idx}.xsa]} {incr idx}
+	write_hw_platform -fixed -include_bit -force -file ${hierarchy_to_test}_${wrapper_module}_${idx}.xsa
+} else {
+	puts "WARNING: since this script was run without the -block flag set, user is responsible for exporting hardware"
+	puts "    the following command can be used to run it:"
+	puts "    write_hw_platform -fixed -include_bit -file ${hierarchy_to_test}_${wrapper_module}.xsa"
 }
-# export finished xsa to the current working directory
-set idx 0
-${hierarchy_to_test}_design_1_wrapper.xsa
-while {[file exists ${hierarchy_to_test}_${wrapper_module}_${idx}.xsa]} {incr idx}
-write_hw_platform -fixed -include_bit -force -file ${hierarchy_to_test}_${wrapper_module}_${idx}.xsa

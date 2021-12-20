@@ -18,4 +18,6 @@ proc connect_${hierarchy} {hierarchy_name} {
     set bridge_ip ${hierarchy_name}/pmod_bridge_0
     set_property CONFIG.PMOD ${pmod_port} [get_bd_cells -quiet ${bridge_ip}]
     connect_bd_intf_net [get_bd_intf_pins ${bridge_ip}/Pmod_out] [get_bd_intf_pins ${pmod_port}]
+    
+    save_bd_design
 }

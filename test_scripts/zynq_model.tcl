@@ -24,8 +24,17 @@ namespace eval hier_bd_model {
 		# todo throw error; no available fclk pins were found
 	}
 
-	proc make_interrupt {bd_pin} {
-		
+	proc make_interrupts {num_interrupts} {
+		# enable irq_f2p
+		set_property CONFIG.PCW_USE_FABRIC_INTERRUPT {1} [get_bd_cells processing_system7_0]
+		set_property CONFIG.PCW_IRQ_F2P_INTR {1} [get_bd_cells processing_system7_0]
+		# create concat
+		set concat "xlconcat_irq_f2p"
+		create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 ${concat}
+		set_property CONFIG.NUM_PORTS ${num_interrupts} [get_bd_cells ${concat}]
+		connect_bd_net [get_bd_pins ${concat}/dout] [get_bd_pins processing_system7_0/IRQ_F2P]
+		# return the list of concat input pins
+		return [get_bd_pins /${concat}/In*]
 	}
 
 	proc make_reset {sync_clock} {

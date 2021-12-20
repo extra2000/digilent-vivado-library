@@ -55,6 +55,7 @@ namespace eval hier_bd_model {
 		connect_bd_net [get_bd_pins ${reset_source}] [get_bd_pins ${interconnect}/ARESETN]
 		connect_bd_net [get_bd_pins ${reset_source}] [get_bd_pins ${interconnect}/S00_ARESETN]
 
+		connect_bd_net [get_bd_pins ${clock_source}] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK]
 		connect_bd_intf_net -boundary_type upper [get_bd_intf_pins ${interconnect}/S00_AXI] [get_bd_intf_pins processing_system7_0/M_AXI_GP0]
 
 		set master_interfaces [list]

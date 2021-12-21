@@ -9,6 +9,12 @@ if {$board_index eq -1} {
 	incr board_index
 	set board [get_board_parts [lindex $argv $board_index]]
 }
+set jobs_idx [lsearch -exact $argv "-jobs"]
+if {$jobs_idx eq -1} {
+	set jobs ""
+} else {
+	set jobs [lrange $argv $jobs_idx [expr $jobs_idx + 1]]
+}
 
 set script_dir [file dirname [info script]]
 set repo_dir [file dirname $script_dir]
@@ -46,7 +52,7 @@ add_files -norecurse ${wrapper}
 set wrapper_module [file rootname [file tail $wrapper]]
 set_property top ${wrapper_module} [current_fileset]
 # launch build
-launch_runs impl_1 -to_step write_bitstream -jobs 12
+launch_runs impl_1 -to_step write_bitstream ${jobs}
 # only block if not using the gui
 if {$block_flag} {
 	wait_on_run impl_1

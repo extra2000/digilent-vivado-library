@@ -1,4 +1,4 @@
-namespace eval hier_bd_model {
+namespace eval processor_model {
 	proc make_processor {} {
 		puts "making processor"
 

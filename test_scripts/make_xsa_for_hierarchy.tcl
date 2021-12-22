@@ -13,10 +13,10 @@ set jobs_idx [lsearch -exact $argv "-jobs"]
 if {$jobs_idx eq -1} {
 	set jobs ""
 } else {
-	set jobs [lrange $argv $jobs_idx [expr $jobs_idx + 1]]
+	set jobs [lindex $argv [expr $jobs_idx + 1]]
 }
 
-set script_dir [file dirname [info script]]
+set script_dir [file dirname [file normalize [info script]]]
 set repo_dir [file dirname $script_dir]
 # choose an unused project name (note that `close_project -delete` can be used to clean up existing projects)
 set project_name "project"
@@ -52,7 +52,11 @@ add_files -norecurse ${wrapper}
 set wrapper_module [file rootname [file tail $wrapper]]
 set_property top ${wrapper_module} [current_fileset]
 # launch build
-launch_runs impl_1 -to_step write_bitstream ${jobs}
+if {$jobs ne ""} {
+	launch_runs impl_1 -to_step write_bitstream -jobs ${jobs}
+} else {
+	launch_runs impl_1 -to_step write_bitstream
+}
 # only block if not using the gui
 if {$block_flag} {
 	wait_on_run impl_1

@@ -1,0 +1,3 @@
+# ignore the ws and proj directories and everything in them
+ws/
+proj/

@@ -1,3 +1,5 @@
+puts "INFO: Running [info script]"
+
 namespace eval processor_model {
 	proc make_processor {} {
 		puts "making processor"

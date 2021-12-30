@@ -45,7 +45,7 @@ set proc "ps7_cortexa9_0"
 set os "standalone"
 set arch "32-bit"
 
-puts "INFO: Running $script"
+puts "INFO: Running $script $argv"
 
 # create the platform and domain using the chosen XSA file
 set platform_name [file tail [file rootname ${xsa_file}]]

@@ -5,7 +5,7 @@
 // Engineer: Arthur Brown
 // 
 // Create Date: 09/17/2019 02:57:58 PM
-// Design Name: PmodENC Hierarchical Block
+// Design Name: PmodGPIO Hierarchical Block
 // Module Name: PmodGPIO_remap
 // 
 // Revision:

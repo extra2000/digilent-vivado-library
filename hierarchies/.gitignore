@@ -16,8 +16,8 @@ Pmod*/constrs/**
 Pmod*/sources/**
 !Pmod*/sources/*.v
 !Pmod*/sources/*.vhd
-!Pmod*/sdk_sources
-!Pmod*/sdk_sources/**
+!Pmod*/sw
+!Pmod*/sw/**
 
 !Zmod*/
 Zmod*/**

@@ -82,9 +82,9 @@
 XStatus AXI_DPTI_Reg_SelfTest(u32 baseaddr)
 {
 	u32 StsReg, flag_0, flag_16;
-	int write_loop_index;
-	int read_loop_index;
-	int Index;
+//	int write_loop_index;
+//	int read_loop_index;
+//	int Index;
 
 
 
@@ -98,13 +98,13 @@ XStatus AXI_DPTI_Reg_SelfTest(u32 baseaddr)
 	xil_printf("User logic slave module test...\n\r");
 
 
-	StsReg = Xil_In32 (baseaddr + STATUS_REG_OFFSET);
+	StsReg = Xil_In32 (baseaddr + DPTI_STATUS_REG_OFFSET);
 	flag_0 = (StsReg & 0x01);
 	flag_16 = (StsReg >> 0x10 ) & 0x01;
 
 	if(flag_0 == 0 || flag_16 == 0)
 	{
-		xil_printf ("Error reading register value at address %x\n", (int)baseaddr + STATUS_REG_OFFSET);
+		xil_printf ("Error reading register value at address %x\n", (int)baseaddr + DPTI_STATUS_REG_OFFSET);
 	    return XST_FAILURE;
 	}
 

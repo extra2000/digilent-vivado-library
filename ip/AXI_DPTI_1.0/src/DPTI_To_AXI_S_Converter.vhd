@@ -68,7 +68,7 @@ use IEEE.std_logic_arith.all;
 entity DPTI_to_AXI_S_converter is
    Port ( 
       -- clock, reset and DPTI signals
-      pResetRx : in std_logic;
+      pResetnRx : in std_logic;
       PROG_CLK : in std_logic;    
       pRxf : in std_logic;    
       pRd : out std_logic;        
@@ -154,10 +154,11 @@ end process;
 
 --------------------------------------------------------------------------------------------------------------------------
 
-generate_pCountSentBytes: process (PROG_CLK, pResetRx) -- this counter will increment when a valid byte was read from the DPTI interface and processed 
+generate_pCountSentBytes: process (PROG_CLK, pResetnRx) -- this counter will increment when a valid byte was read from the DPTI interface and processed 
 begin
-if pResetRx = '0'   then
+if pResetnRx = '0'   then
    pCountSentBytes <= (others => '0');
+   pCountBytesIncrFlag <= '1';
 elsif rising_edge(PROG_CLK)  then
    if  pLengthRxCnt > 0 and ((pRxf = '0' and pRxfDelay = '0') or pLastTransferFlag = '1') and pInTready = '1' then -- check if a transfer is in progress and all the conditions are in place to read and process a byte
       pCountSentBytes <= pCountSentBytes + '1';   -- the counter is incremented
@@ -174,10 +175,10 @@ end process;
 
 --------------------------------------------------------------------------------------------------------------------------
 
-generate_Index: process (PROG_CLK, pResetRx)  -- the Index integer is used for positioning the individual bytes in the 4 byte TDATA register
+generate_Index: process (PROG_CLK, pResetnRx)  -- the Index integer is used for positioning the individual bytes in the 4 byte TDATA register
 begin
 
-if pResetRx = '0'  then
+if pResetnRx = '0'  then
     Index <= 0;
 elsif rising_edge(PROG_CLK)  then
     if  pLengthRxCnt > 0 and pRxf = '0' and pRxfDelay = '0' and pInTready = '1' then  -- in order to increment Index, the data provided must be valid and the receivind FIFO must not be full
@@ -196,9 +197,9 @@ end process;
 
 --------------------------------------------------------------------------------------------------------------------------
 
-generate_pOutTdata: process (PROG_CLK, pResetRx, Index, pLengthRxCnt) is  -- TDATA is generated from data received from the DPTI interface
+generate_pOutTdata: process (PROG_CLK, pResetnRx, Index, pLengthRxCnt) is  -- TDATA is generated from data received from the DPTI interface
 begin
-if (pResetRx = '0') then
+if (pResetnRx = '0') then
    pOutTdata <= (others => '0');
 elsif rising_edge(PROG_CLK) then 
    if pLengthRxCnt > 3 and pRxEnDir = '1' and pRxf = '0' and pRxfDelay = '0' and pInTready = '1'  then  -- conditions for data to be considered valid
@@ -209,9 +210,9 @@ end process;
 
 --------------------------------------------------------------------------------------------------------------------------
 
-gen_pOutTkeep_read_AXI_Lite_registers: process (PROG_CLK, pResetRx, Index, pLengthRxCnt) is  -- reading the AXI Lite registers, controlling the main counters, generating TKEEP
+gen_pOutTkeep_read_AXI_Lite_registers: process (PROG_CLK, pResetnRx, Index, pLengthRxCnt) is  -- reading the AXI Lite registers, controlling the main counters, generating TKEEP
 begin
-if (pResetRx = '0') then
+if (pResetnRx = '0') then
    pLengthRxCnt <= (others => '0');
 elsif rising_edge(PROG_CLK) then 
    if pOvalidControl = '1' and pLengthRxCnt = 0 then -- the control bit (and the direction) can only be changed when the module is idle

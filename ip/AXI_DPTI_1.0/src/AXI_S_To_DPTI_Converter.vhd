@@ -61,7 +61,7 @@ use IEEE.std_logic_arith.all;
 entity AXI_S_to_DPTI_converter is
    Port ( 
       -- clock, reset and DPTI signals
-      pResetTx : in std_logic;
+      pResetnTx : in std_logic;
       PROG_CLK : in std_logic;    
       pTxe : in std_logic;
       pWr : out std_logic;
@@ -118,32 +118,30 @@ pTransferInvalidFlag <= '1' when pTxe = '1' and  pCtlWr = '0' else '0'; -- detec
 
 --------------------------------------------------------------------------------------------------------------------------
 
-generate_WR: process (PROG_CLK, pLengthTxCnt, pResetTx) -- PROG_WRN is generated
+generate_WR: process (PROG_CLK, pLengthTxCnt, pResetnTx) -- PROG_WRN is generated
 begin
-if rising_edge (PROG_CLK) then
-    if pResetTx = '0' then
-        pCtlWr <= '1';
-    else
+if pResetnTx = '0' then
+    pCtlWr <= '1';
+else if rising_edge (PROG_CLK) then
         if pAuxTkeep /= 0 and pLengthTxCnt > 0 then  -- check if the transfer is not finnished and there is at least one valid data byte
             pCtlWr <= '0'; -- when the signal is 0 then the byte currently on the PROG_D bus is valid  
         else   -- if valid data is not available or the transfer is completed
             pCtlWr <= '1'; -- PROG_WRN is '1'
-        end if; 
-    end if;      
+        end if;  
+    end if;   
 end if;
 end process;
 
 --------------------------------------------------------------------------------------------------------------------------
 
-read_Tkeep_and_Tdata: process (PROG_CLK, pResetTx)
+read_Tkeep_and_Tdata: process (PROG_CLK, pResetnTx)
 variable aux_tkindex : integer;
 begin
-if rising_edge(PROG_CLK) then
-   if pResetTx = '0' then
+if pResetnTx = '0' then
       aux_tkindex := 0;
       pAuxTkeep  <= (others => '0');
       pAuxTdata <= (others => '0');
-   else
+else if rising_edge(PROG_CLK)then
       if  pLengthTxCnt > 0 and pTxe = '0' and pTxEnDir = '1' then   -- check to see if a transfer is in progress
          if (pAuxTkeep = 0 or pAuxTkeep = 1 or pAuxTkeep = 2 or pAuxTkeep = 4 or pAuxTkeep = 8)  and pInTvalid = '1' then  -- check if the current set of TDATA and TKEEP contains at most one valid byte of data    
             pAuxTkeep <= pInTkeep; --new tkeep is read 
@@ -164,12 +162,12 @@ end process;
 
 --------------------------------------------------------------------------------------------------------------------------
 
-generate_pDataOut: process (PROG_CLK, pResetTx)
+generate_pDataOut: process (PROG_CLK, pResetnTx)
 begin
-if rising_edge(PROG_CLK) then
-   if pResetTx = '0' then
-      pDataOut <= (others => '0');
-   else
+if pResetnTx = '0' then
+  pDataOut <= (others => '0');
+  pLengthTxCnt <= (others=>'0');
+else if rising_edge(PROG_CLK) then
       if  pOvalidControl = '1' and pLengthTxCnt = 0 then -- the control bit (and the direction) can only be changed when the module is idle
          pTxEnDir <= pAXI_L_Control(0);   -- Reading control byte from AXI LITE register. Bit (0) sets the transfer's direction.   
       end if;
@@ -184,7 +182,7 @@ if rising_edge(PROG_CLK) then
             end if;            
          end loop; 
       end if;
-   end if;      
+    end if;      
 end if;     
 end process;
 

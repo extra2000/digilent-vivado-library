@@ -42,10 +42,10 @@
  * <pre>
  * MODIFICATION HISTORY:
  *
- * Ver   Who            Date         Changes
- * ----- -------------- ------------ -----------------------------------------------
- * 1.00  Sergiu Arpadi  2016-Sep-20  First release
- *
+ * Ver   Who            	Date         Changes
+ * ----- -------------- 	------------ -----------------------------------------------
+ * 1.00  Sergiu Arpadi  	2016-Sep-20  First release
+ * 1.10  Thomas Kappenman	2020-Apr-28  Removed blocking call
  * </pre>
  *
  *****************************************************************************/
@@ -57,36 +57,53 @@
 /************************** Function Definitions ***************************/
 XStatus DPTI_SimpleTransfer (u32 BaseAddress, u8 Direction, u32 TransferLength)
 {
-	u32 flag_0, flag_16, StsReg;
+	u32 txLengthEmptyFlag, rxLengthEmptyFlag, StsReg, timeout=0;
 
-	if (TransferLength <0 || TransferLength > 8388607)
+	if (TransferLength > 8388607)
 		return XST_FAILURE; // length is not a valid number
 	else
 	{
-		StsReg = Xil_In32 (BaseAddress + STATUS_REG_OFFSET);
-		flag_0 = (StsReg & 0x01);
-		flag_16 = (StsReg >> 0x10 ) & 0x01;
+		StsReg = Xil_In32 (BaseAddress + DPTI_STATUS_REG_OFFSET);
+		txLengthEmptyFlag = (StsReg & DPTI_SR_TX_LEN_EMPTY_MASK);
+		rxLengthEmptyFlag = (StsReg & DPTI_SR_RX_LEN_EMPTY_MASK);
 
-		while (flag_16 == 0 || flag_0 == 0)
-			{
-				StsReg = Xil_In32 (BaseAddress + STATUS_REG_OFFSET);
-				flag_0 = (StsReg & 0x01);
-				flag_16 = (StsReg >> 0x10 ) & 0x01;
-			}
+//		while (rxLengthEmptyFlag == 0 || txLengthEmptyFlag == 0)
+//			{
+//				StsReg = Xil_In32 (BaseAddress + DPTI_STATUS_REG_OFFSET);
+//				txLengthEmptyFlag = (StsReg & DPTI_SR_TX_LEN_EMPTY_MASK);
+//				rxLengthEmptyFlag = (StsReg & DPTI_SR_RX_LEN_EMPTY_MASK);
+//				timeout ++;
+//				if(timeout >= 1000000)return XST_FAILURE;
+//			}
 
-		if (flag_16 == 1 && flag_0 == 1)
-			{
-				if (Direction == 1)
-						Xil_Out32(BaseAddress + CONTROL_REG_OFFSET, STREAM_TO_DPTI);
+//		if (rxLengthEmptyFlag == 1 && txLengthEmptyFlag == 1){
 
-				if (Direction == 2)
-						Xil_Out32(BaseAddress + CONTROL_REG_OFFSET, DPTI_TO_STREAM);
+		Xil_Out32(BaseAddress + DPTI_CONTROL_REG_OFFSET, 0);
 
-				Xil_Out32 (BaseAddress + LENGTH_REG_OFFSET, TransferLength);
-			}
+		if (Direction == 1){
+			Xil_Out32(BaseAddress + DPTI_CONTROL_REG_OFFSET, STREAM_TO_DPTI);
+		}
+
+		if (Direction == 2){
+			Xil_Out32(BaseAddress + DPTI_CONTROL_REG_OFFSET, DPTI_TO_STREAM);
+		}
+
+		Xil_Out32 (BaseAddress + DPTI_LENGTH_REG_OFFSET, TransferLength);
+//		}
+//		else {
+//			xil_printf("DPTI_SimpleTransfer: Transfer already in progress.");
+//			return XST_FAILURE;
+//		}
 
 	}
 
 	return XST_SUCCESS;
 
+}
+
+XStatus DPTI_Reset(u32 BaseAddress){
+	Xil_Out32(BaseAddress+ DPTI_CONTROL_REG_OFFSET, DPTI_CR_RESET_MASK);
+	Xil_Out32(BaseAddress+ DPTI_LENGTH_REG_OFFSET, 0);
+	Xil_Out32(BaseAddress+ DPTI_CONTROL_REG_OFFSET, 0);
+	return XST_SUCCESS;
 }

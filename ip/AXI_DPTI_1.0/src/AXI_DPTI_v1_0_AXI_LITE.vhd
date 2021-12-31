@@ -18,7 +18,7 @@ entity axi_dpti_v1_0_AXI_LITE is
 		-- Users to add ports here
       lAXI_LiteLengthReg : out std_logic_vector (31 downto 0);
       lAXI_LiteControlReg : out std_logic_vector (31 downto 0);
-      lAXI_LiteStatusReg : in std_logic_vector (31 downto 0);
+      lAXI_LiteStatusReg : out std_logic_vector (31 downto 0);
       lPushLength : out std_logic;        
       lPushControl : out std_logic; 
       lRdyLength : in std_logic;
@@ -26,6 +26,11 @@ entity axi_dpti_v1_0_AXI_LITE is
       lAckLength : in std_logic;
       lAckControl : in std_logic;
       
+      TxLengthEmpty : in std_logic;
+      RxLengthEmpty : in std_logic;
+      
+      prog_spien : in std_logic;
+ 
 		-- User ports ends
 		-- Do not modify the ports beyond this line
 
@@ -128,6 +133,10 @@ architecture arch_imp of axi_dpti_v1_0_AXI_LITE is
 	------------------------------------------------------------------------
    --User signals
    ------------------------------------------------------------------------
+   signal StatusReg : std_logic_vector(31 downto 0);
+   signal clearResetFlag : std_logic;
+   
+   
    signal lOneshotTriggerLength : std_logic := '0';    -- used to generate LENGTH handshakedata IPUSH signal
    signal lOneshotTriggerControl : std_logic := '0';   -- used to generate CONTROL handshakedata IPUSH signal
    signal lCtlPushLength : std_logic ; 
@@ -139,6 +148,10 @@ architecture arch_imp of axi_dpti_v1_0_AXI_LITE is
    signal lControlFlag : std_logic := '0';
    
 begin
+lAXI_LiteStatusReg <= slv_reg2;
+StatusReg(0) <= TxLengthEmpty;
+StatusReg(16) <= RxLengthEmpty;
+
 
 lPushLength <= lCtlPushLength;        
 lPushControl <= lCtlPushControl;
@@ -160,7 +173,21 @@ lPushControl <= lCtlPushControl;
    
    lAXI_LiteLengthReg <= slv_reg0;    -- LENGTH register
    lAXI_LiteControlReg <= slv_reg1;   -- CONTROL register
-   slv_reg2 <= lAXI_LiteStatusReg;    -- STATUS register
+   --slv_reg2 <= StatusReg;    -- STATUS register
+
+--Latch prog_spien. This is used to detect when it has been hotplugged in software.
+    process (S_AXI_ACLK)
+    begin
+    if rising_edge(S_AXI_ACLK) then 
+        if(prog_spien='1')then
+            StatusReg(1) <= '1';
+        else if (slv_reg1(2) ='1')then
+            StatusReg(1) <= '0';
+        end if;
+        end if;
+    end if;
+    end process;
+
 
 	process (S_AXI_ACLK)
 	begin
@@ -239,16 +266,15 @@ lPushControl <= lCtlPushControl;
 	    if S_AXI_ARESETN = '0' then
 	      slv_reg0 <= (others => '0');
 	      slv_reg1 <= (others => '0');
---	      slv_reg2 <= (others => '0');
+	      slv_reg2 <= (others => '0');
 	      slv_reg3 <= (others => '0');
-	    
 	      lOneshotTriggerLength <= '0'; 
-         lOneshotTriggerControl <= '0';
+          lOneshotTriggerControl <= '0';
           
 	    else
-	      
+	      slv_reg2 <= StatusReg;
 	      lOneshotTriggerLength <= '0'; 
-         lOneshotTriggerControl <= '0';
+          lOneshotTriggerControl <= '0';
 
 	      loc_addr := axi_awaddr(ADDR_LSB + OPT_MEM_ADDR_BITS downto ADDR_LSB);
 	      if (slv_reg_wren = '1') then
@@ -274,13 +300,13 @@ lPushControl <= lCtlPushControl;
 	              end if;
 	            end loop;
 	          when b"10" =>
-	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
-	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
-	                -- Respective byte enables are asserted as per write strobes                   
-	                -- slave registor 2
+--	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
+--	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
+--	                -- Respective byte enables are asserted as per write strobes                   
+--	                -- slave registor 2
 --	                slv_reg2(byte_index*8+7 downto byte_index*8) <= S_AXI_WDATA(byte_index*8+7 downto byte_index*8);
-	              end if;
-	            end loop;
+--	              end if;
+--	            end loop;
 	          when b"11" =>
 	            for byte_index in 0 to (C_S_AXI_DATA_WIDTH/8-1) loop
 	              if ( S_AXI_WSTRB(byte_index) = '1' ) then
@@ -292,7 +318,7 @@ lPushControl <= lCtlPushControl;
 	          when others =>
 	            slv_reg0 <= slv_reg0;
 	            slv_reg1 <= slv_reg1;
---	            slv_reg2 <= slv_reg2;
+	            slv_reg2 <= StatusReg;
 	            slv_reg3 <= slv_reg3;
 	        end case;
 	      end if;

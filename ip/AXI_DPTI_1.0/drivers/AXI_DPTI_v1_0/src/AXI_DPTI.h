@@ -53,22 +53,34 @@
 #ifndef AXI_DPTI_H
 #define AXI_DPTI_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /****************** Include Files ********************/
 #include "xil_types.h"
 #include "xstatus.h"
 
-#define LENGTH_REG_OFFSET 0
-#define CONTROL_REG_OFFSET 4
-#define STATUS_REG_OFFSET 8
+#define DPTI_LENGTH_REG_OFFSET 0
+#define DPTI_CONTROL_REG_OFFSET 4
+#define DPTI_STATUS_REG_OFFSET 8
 
 #define DPTI_TO_STREAM 2
 #define STREAM_TO_DPTI 1
+
+#define DPTI_CR_RESET_MASK (1<<2)
+#define DPTI_SR_REINIT_MASK (1<<1)
+#define DPTI_SR_TX_LEN_EMPTY_MASK (1<<0)
+#define DPTI_SR_RX_LEN_EMPTY_MASK (1<<16)
 
 
 /************************** Function Prototypes ****************************/
  
 XStatus DPTI_SimpleTransfer (u32 BaseAddress, u8 Direction, u32 TransferLength);
 XStatus AXI_DPTI_Reg_SelfTest(u32 baseaddr);
+XStatus DPTI_Reset(u32 BaseAddress);
 
+#ifdef __cplusplus
+}
+#endif
 #endif // AXI_DPTI_H

@@ -139,13 +139,18 @@ component axi_dpti_v1_0_AXI_LITE is
    port (
       lAXI_LiteLengthReg : out std_logic_vector (31 downto 0);
       lAXI_LiteControlReg : out std_logic_vector (31 downto 0);
-      lAXI_LiteStatusReg : in std_logic_vector (31 downto 0);
+      lAXI_LiteStatusReg : out std_logic_vector (31 downto 0);
       lPushLength : out std_logic;        
       lPushControl : out std_logic;  
       lRdyLength : in std_logic;
       lRdyControl : in std_logic;
       lAckLength : in std_logic;
       lAckControl : in std_logic;
+      
+      TxLengthEmpty : in std_logic;
+      RxLengthEmpty : in std_logic;
+      
+      prog_spien : in std_logic;
            
       S_AXI_ACLK	: in std_logic;
       S_AXI_ARESETN	: in std_logic;
@@ -190,7 +195,7 @@ end component;
 
 --------------------------------------------------------------------------------------------------------------------------
 
-component fifo_generator_0 
+component fifo_generator_dpti 
    PORT (
       m_aclk : IN STD_LOGIC;
       s_aclk : IN STD_LOGIC;
@@ -212,7 +217,7 @@ end component;
 
 component AXI_S_to_DPTI_converter is
    Port ( 
-      pResetTx : in std_logic;
+      pResetnTx : in std_logic;
       PROG_CLK : in std_logic;    
       pTxe : in std_logic;
       pWr : out std_logic;
@@ -234,7 +239,7 @@ end component;
 
 component DPTI_to_AXI_S_converter is
    Port ( 
-      pResetRx : in std_logic;
+      pResetnRx : in std_logic;
       PROG_CLK : in std_logic;    
       pRxf : in std_logic;    
       pRd : out std_logic;        
@@ -283,7 +288,7 @@ signal lCtlPushControl : std_logic;
 ---------------------------------------------------
 signal pControlRegSyncd : std_logic_vector (31 downto 0);
 signal pLengthRegSyncd : std_logic_vector (31 downto 0);
-signal pStatusReg : std_logic_vector (31 downto 0);
+--signal pStatusReg : std_logic_vector (31 downto 0);
 
 signal lCtlRdyLength : std_logic; 
 signal pCtlAckLength : std_logic := '0';
@@ -304,11 +309,14 @@ signal aResetStatus : std_logic :='1';
 
 signal pCtlRxLengthEmpty : std_logic :='1';
 signal pCtlTxLengthEmpty : std_logic :='1';
+signal lCtlRxLengthEmpty : std_logic :='1';
+signal lCtlTxLengthEmpty : std_logic :='1';
 
 --------------------------------------------------------------------------------------------------------------------------
 
-signal aCtlResetRx : std_logic := '0';
-signal aCtlResetTx : std_logic := '0';
+signal spien_syncReg : std_logic;
+signal aCtlResetnRx : std_logic;
+signal aCtlResetnTx : std_logic;
 signal pAXI_LiteReset : std_logic := '0';
 signal pM_AXIS_Reset : std_logic := '0';
 signal pS_AXIS_Reset : std_logic := '0';
@@ -320,37 +328,81 @@ signal pS_AXIS_Reset : std_logic := '0';
 signal PLL_Fb_OutClk : std_logic;
 signal PLL_Fb_InClk : std_logic;
 signal PROG_CLK : std_logic;
-signal aPLL_Reset : std_logic := '0';
+signal aPLL_Reset : std_logic;
 signal aPLL_Pwrdwn : std_logic := '0';
 signal pPLL_Locked : std_logic := '0';  
 
 --------------------------------------------------------------------------------------------------------------------------	
 
+signal aSoft_Reset:std_logic;
+signal pSoft_Reset:std_logic;
+
+signal prog_rdn_0 :std_logic;
+signal prog_wrn_0 : std_logic;
+signal prog_oen_0 : std_logic;
+signal pCtlOeN :std_logic;
+
+signal clearFlag:std_logic;
+
 begin
 
+pCtlOeN <= not pCtlOe;
+
+aSoft_Reset <= lCtlAXI_LiteControlReg(2);
+prog_rdn <= prog_rdn_0;
+prog_wrn <= prog_wrn_0;
+prog_oen <= prog_oen_0;
+
+-- prog_spien is used as a sync reset signal by the PC.
+-- spien_syncReg logic. Latch falling edge of prog_spien, prog_clk will stop. Wait until PROG_CLK is enabled again to disable reset
+process (prog_clko, prog_spien)begin
+    if(prog_spien='1')then
+        spien_syncreg<=prog_spien;
+    else if rising_edge(prog_clko)then
+            spien_syncReg<=prog_spien;
+        end if;
+    end if;
+end process;
+
 -- reset signals
-aCtlResetTx <= pPLL_Locked and pAXI_LiteReset and pS_AXIS_Reset;
-aCtlResetRx <= pPLL_Locked and pAXI_LiteReset and pM_AXIS_Reset;
+aCtlResetnTx <= pPLL_Locked and pAXI_LiteReset and pS_AXIS_Reset and not pSoft_Reset and not spien_syncReg; --pPLL_Locked and 
+aCtlResetnRx <= pPLL_Locked and pAXI_LiteReset and pM_AXIS_Reset and not pSoft_Reset and not spien_syncReg; --pPLL_Locked and 
+aPLL_Reset <= '0';--prog_spien;
 
 -- status register
-pStatusReg (0) <= pCtlTxLengthEmpty;
-pStatusReg (16) <= pCtlRxLengthEmpty;
-pStatusReg (15 downto 1) <= (others => '0'); 
-pStatusReg (31 downto 17) <= (others => '0'); 
+--pStatusReg (0) <= pCtlTxLengthEmpty;
+--pStatusReg (16) <= pCtlRxLengthEmpty;
+--pStatusReg (15 downto 1) <= (others => '0'); 
+--pStatusReg (31 downto 17) <= (others => '0'); 
 
 -- IOBUF is implemented
-prog_d <= pCtlDataOut when pCtlOe = '1' else "ZZZZZZZZ";    
-pCtlDataIn <= prog_d;
+DataIOBUFs: for i in 0 to 7 generate
+IOBUF_inst : IOBUF
+   generic map (
+      DRIVE => 12,
+      IOSTANDARD => "DEFAULT",
+      SLEW => "SLOW")
+   port map (
+      O => pCtlDataIn(i),     -- Buffer output
+      IO => prog_d(i),   -- Buffer inout port (connect directly to top-level port)
+      I => pCtlDataOut(i),     -- Buffer input
+      T => pCtlOeN      -- 3-state enable input, high=input, low=output 
+   );
+   end generate DataIOBUFs;
+
+--prog_d <= pCtlDataOut when pCtlOe = '1' else "ZZZZZZZZ";    
+--pCtlDataIn <= prog_d;
 
 -- SIWU signal is not used
 prog_siwun <= '1';  
 
-prog_oen <= pCtlOe;
+prog_oen_0 <= pCtlOe;
 
 aCtlResetLength <= not pPLL_Locked;
 aCtlResetControl <= not pPLL_Locked;
 
 PROG_CLK <= Pll_Fb_InClk;
+
 --------------------------------------------------------------------------------------------------------------------------
 -- Instantiations
 --------------------------------------------------------------------------------------------------------------------------
@@ -361,6 +413,19 @@ BUFG_inst : BUFG  -- used for PLL feedback clock
       I => Pll_Fb_OutClk  -- 1-bit input: Clock input
    );
    
+
+
+--BUFIO_Inst : BUFR
+--    generic map (
+--      BUFR_DIVIDE => "BYPASS",   -- Values: "BYPASS, 1, 2, 3, 4, 5, 6, 7, 8" 
+--      SIM_DEVICE => "7SERIES"  -- Must be set to "7SERIES" 
+--   )
+--    port map (
+--     O => PROG_CLK,
+--     I => prog_clko,
+--     CE => '0', -- Unused in BYPASS mode
+--     CLR => '0' -- Unused in BYPASS mode
+-- );
 
 --------------------------------------------------------------------------------------------------------------------------
 
@@ -432,6 +497,11 @@ axi_dpti_v1_0_AXI_LITE_inst : axi_dpti_v1_0_AXI_LITE
       lRdyControl => lCtlRdyControl,  
       lAckLength => lCtlAckLength,    
       lAckControl => lCtlAckControl,
+      
+      TxLengthEmpty => lCtlTxLengthEmpty,
+      RxLengthEmpty => lCtlRxLengthEmpty,
+      
+      prog_spien => prog_spien,
 
 		S_AXI_ACLK	=> axi_lite_aclk,
 		S_AXI_ARESETN	=> axi_lite_aresetn,
@@ -510,18 +580,40 @@ SyncAsync_oAckControl: entity work.SyncAsync
         
 --------------------------------------------------------------------------------------------------------------------------
         
-GenSyncStatusReg: for i in 0 to 31 generate  -- STATUS register sync module (from PROG_CLK domain to AXI_L_CLK domain)
-SyncAsyncMultiple: entity work.SyncAsync
+--GenSyncStatusReg: for i in 0 to 31 generate  -- STATUS register sync module (from PROG_CLK domain to AXI_L_CLK domain)
+--SyncAsyncMultiple: entity work.SyncAsync
+--   generic map (
+--      kResetTo => '0',
+--      kStages => 2) --use double FF synchronizer
+--   port map (
+--      aReset => '0',
+--      aIn => pStatusReg(i),
+--      OutClk => axi_lite_aclk,
+--      oOut => lCtlAXI_LiteStatusReg(i)
+--   );
+--end generate GenSyncStatusReg;
+
+SyncAsyncTxLenEmpty: entity work.SyncAsync
    generic map (
       kResetTo => '0',
       kStages => 2) --use double FF synchronizer
    port map (
       aReset => '0',
-      aIn => pStatusReg(i),
+      aIn => pCtlTxLengthEmpty,
       OutClk => axi_lite_aclk,
-      oOut => lCtlAXI_LiteStatusReg(i)
+      oOut => lCtlTxLengthEmpty
    );
-end generate GenSyncStatusReg;
+   
+SyncAsyncRxLenEmpty: entity work.SyncAsync
+   generic map (
+      kResetTo => '0',
+      kStages => 2) --use double FF synchronizer
+   port map (
+      aReset => '0',
+      aIn => pCtlRxLengthEmpty,
+      OutClk => axi_lite_aclk,
+      oOut => lCtlRxLengthEmpty
+   );
 
 ------------------------------------------------------------------------------------------------
 
@@ -547,14 +639,22 @@ SyncReset_S_AXIS: entity work.ResetBridge
    port map (
       aRst => s_axis_aresetn,
       OutClk => PROG_CLK,
-      oRst => pS_AXIS_Reset);      
+      oRst => pS_AXIS_Reset);    
+      
+SyncReset_SoftReset: entity work.ResetBridge
+   generic map (
+      kPolarity => '1')
+   port map (
+      aRst => aSoft_Reset,
+      OutClk => PROG_CLK,
+      oRst => pSoft_Reset);   
 
 ------------------------------------------------------------------------------------------------
 
-RX_fifo : fifo_generator_0 PORT MAP (  -- AXI STREAM FIFO : used only for clock domain crossing. low capacity
+RX_fifo : fifo_generator_dpti PORT MAP (  -- AXI STREAM FIFO : used only for clock domain crossing. low capacity
       m_aclk => m_axis_aclk,
       s_aclk => PROG_CLK,
-      s_aresetn => aCtlResetRx,
+      s_aresetn => aCtlResetnRx,
       s_axis_tvalid => pCtlOutTvalid,
       s_axis_tready => pCtlInTready,
       s_axis_tdata => pCtlOutTdata,
@@ -569,10 +669,10 @@ RX_fifo : fifo_generator_0 PORT MAP (  -- AXI STREAM FIFO : used only for clock 
 
 ----------------------------------------------------------------------------------------------------------   
  
-TX_fifo : fifo_generator_0 PORT MAP (  -- AXI STREAM FIFO : used only for clock domain crossing. low capacity
+TX_fifo : fifo_generator_dpti PORT MAP (  -- AXI STREAM FIFO : used only for clock domain crossing. low capacity
       m_aclk => PROG_CLK,
       s_aclk => s_axis_aclk,
-      s_aresetn => aCtlResetTx,
+      s_aresetn => aCtlResetnTx,
       s_axis_tvalid => s_axis_tvalid,
       s_axis_tready => s_axis_tready,
       s_axis_tdata => s_axis_tdata,
@@ -588,10 +688,10 @@ TX_fifo : fifo_generator_0 PORT MAP (  -- AXI STREAM FIFO : used only for clock 
 ----------------------------------------------------------------------------------------------------------
 
 AXI_S_to_DPTI_inst : AXI_S_to_DPTI_converter PORT MAP (  -- converts 32bit AXI STREAM from TX_FIFO data to 8bit data which is then sent to the DPTI interface 
-      pResetTx => aCtlResetTx,
+      pResetnTx => aCtlResetnTx,
       PROG_CLK => PROG_CLK,
       pTxe => prog_txen,
-      pWr => prog_wrn,
+      pWr => prog_wrn_0,
       pDataOut => pCtlDataOut,
         
       pOutTready => pCtlOutTready,
@@ -611,10 +711,10 @@ AXI_S_to_DPTI_inst : AXI_S_to_DPTI_converter PORT MAP (  -- converts 32bit AXI S
 ----------------------------------------------------------------------------------------------------------
 
 DPTI_to_AXI_S_inst : DPTI_to_AXI_S_converter PORT MAP (  -- converts 8bit data received from the DPTI interface to 32bit AXI STREAM data sent to RX_FIFO
-      pResetRx => aCtlResetRx,
+      pResetnRx => aCtlResetnRx,
       PROG_CLK => PROG_CLK,
       pRxf => prog_rxen,
-      pRd => prog_rdn,
+      pRd => prog_rdn_0,
       pOe => pCtlOe,
       pDataIn => pCtlDataIn,
                

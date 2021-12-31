@@ -94,7 +94,7 @@ PLL_LockSyncAsync: SyncAsync
       OutClk => PixelClkIn,
       oOut => pLocked);
       
-PLL_LockLostDetect: process(PixelClkIn)
+PLL_LockLostDetect: process(PixelClkIn, pRst)
 begin
    if (pRst = '1') then
       pLocked_q <= (others => '0');

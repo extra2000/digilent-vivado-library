@@ -5,7 +5,10 @@ Overview
 --------------
 In this repo you may find free-to-use IP cores and interface definitions compatible with Xilinx Vivado IP Catalog.
 
-In addition, you may find scripts that can be used to create systems of IP. These are contained in the hierarchies folder of this repo, and are documented in hierarchies/README.md.
+In addition, you may find scripts that can be used to create systems of IP. These are contained in the hierarchies folder of this repo, and are documented in the [hierarchies README](hierarchies/README.md).
+
+Additional scripts for creating projects and software applications with the hierarchies can be found in the test_scripts folder of this repo, documented in the [test_scripts README](test_scripts/README.md)
+
 
 Installation
 --------------

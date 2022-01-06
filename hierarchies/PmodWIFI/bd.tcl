@@ -214,8 +214,8 @@ proc create_hier_cell_PmodWIFI_0 { parentCell nameHier } {
   # Create port connections
   connect_bd_net -net axi_gpio_bottom_row_ip2intc_irpt [get_bd_pins gpio_interrupt] [get_bd_pins axi_gpio_bottom_row/ip2intc_irpt]
   connect_bd_net -net ext_spi_clk_0_1 [get_bd_pins ext_spi_clk] [get_bd_pins axi_quad_spi_0/ext_spi_clk]
-  connect_bd_net -net s_axi_aclk_0_1 [get_bd_pins s_axi_aclk] [get_bd_pins axi_gpio_bottom_row/s_axi_aclk] [get_bd_pins axi_quad_spi_0/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk]
-  connect_bd_net -net s_axi_aresetn_0_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_bottom_row/s_axi_aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn]
+  connect_bd_net -net s_axi_aclk_0_1 [get_bd_pins s_axi_aclk] [get_bd_pins axi_gpio_cs/s_axi_aclk] [get_bd_pins axi_gpio_bottom_row/s_axi_aclk] [get_bd_pins axi_quad_spi_0/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk]
+  connect_bd_net -net s_axi_aresetn_0_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_cs/s_axi_aresetn] [get_bd_pins axi_gpio_bottom_row/s_axi_aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn]
 
   # Restore current instance
   current_bd_instance $oldCurInst

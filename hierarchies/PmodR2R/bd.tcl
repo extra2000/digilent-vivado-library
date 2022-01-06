@@ -39,7 +39,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# PmodPIR_remap
+# PmodR2R_remap
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -77,7 +77,7 @@ digilentinc.com:ip:pmod_bridge:*\
 set bCheckModules 1
 if { $bCheckModules == 1 } {
    set list_check_mods "\ 
-PmodPIR_remap\
+PmodR2R_remap\
 "
 
    set list_mods_missing ""
@@ -150,13 +150,13 @@ proc create_hier_cell_PmodR2R_0 { parentCell nameHier } {
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
 
-  # Create instance: PmodPIR_remap_0, and set properties
-  set block_name PmodPIR_remap
-  set block_cell_name PmodPIR_remap_0
-  if { [catch {set PmodPIR_remap_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: PmodR2R_remap_0, and set properties
+  set block_name PmodR2R_remap
+  set block_cell_name PmodR2R_remap_0
+  if { [catch {set PmodR2R_remap_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $PmodPIR_remap_0 eq "" } {
+   } elseif { $PmodR2R_remap_0 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -172,9 +172,9 @@ proc create_hier_cell_PmodR2R_0 { parentCell nameHier } {
 
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins S_AXI_GPIO] [get_bd_intf_pins axi_gpio_0/S_AXI]
-  connect_bd_intf_net -intf_net PmodPIR_remap_0_GPIO_OUT_BOTTOM [get_bd_intf_pins PmodPIR_remap_0/GPIO_OUT_BOTTOM] [get_bd_intf_pins pmod_bridge_0/GPIO_Bottom_Row]
-  connect_bd_intf_net -intf_net PmodPIR_remap_0_GPIO_OUT_TOP [get_bd_intf_pins PmodPIR_remap_0/GPIO_OUT_TOP] [get_bd_intf_pins pmod_bridge_0/GPIO_Top_Row]
-  connect_bd_intf_net -intf_net axi_gpio_0_GPIO [get_bd_intf_pins PmodPIR_remap_0/GPIO_IN] [get_bd_intf_pins axi_gpio_0/GPIO]
+  connect_bd_intf_net -intf_net PmodR2R_remap_0_GPIO_OUT_BOTTOM [get_bd_intf_pins PmodR2R_remap_0/GPIO_OUT_BOTTOM] [get_bd_intf_pins pmod_bridge_0/GPIO_Bottom_Row]
+  connect_bd_intf_net -intf_net PmodR2R_remap_0_GPIO_OUT_TOP [get_bd_intf_pins PmodR2R_remap_0/GPIO_OUT_TOP] [get_bd_intf_pins pmod_bridge_0/GPIO_Top_Row]
+  connect_bd_intf_net -intf_net axi_gpio_0_GPIO [get_bd_intf_pins PmodR2R_remap_0/GPIO_IN] [get_bd_intf_pins axi_gpio_0/GPIO]
   connect_bd_intf_net -intf_net pmod_bridge_0_Pmod_out [get_bd_intf_pins Pmod_out] [get_bd_intf_pins pmod_bridge_0/Pmod_out]
 
   # Create port connections

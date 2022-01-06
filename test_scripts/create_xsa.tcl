@@ -30,6 +30,14 @@ if {$jobs_idx eq -1} {
 	set jobs [lindex $argv [expr $jobs_idx + 1]]
 }
 
+# check for a handoff-dir flag, which sets the directory the xsa is to be exported into, the default is test_scripts/handoff
+set handoff_dir_idx [lsearch -exact $argv "-handoff-dir"]
+if {$handoff_dir_idx eq -1} {
+	set handoff_dir [file join $script_dir handoff]
+} else {
+	set handoff_dir [file normalize [lindex $argv [expr $handoff_dir_idx + 1]]]
+}
+
 # the final argument is the name of the hierarchy to test, which must match a folder in the repo's hierarchies directory
 set hierarchy_to_test [lindex $argv [expr [llength $argv] - 1]]
 
@@ -82,15 +90,24 @@ if {$jobs ne ""} {
 	launch_runs impl_1 -to_step write_bitstream
 }
 
+# pick an xsa name
+set idx 0
+set done 0
+while {${done} == 0} {
+	set xsa_file [file join ${handoff_dir} ${hierarchy_to_test}_${wrapper_module}_${idx}.xsa]
+	incr idx
+	if {[file exists ${xsa_file}] == 0} {
+		set done 1
+	}
+}
+
 # only block if not using the gui
 if {$block_flag} {
 	wait_on_run impl_1
 	# export finished xsa to the current working directory
-	set idx 0
-	while {[file exists ${hierarchy_to_test}_${wrapper_module}_${idx}.xsa]} {incr idx}
-	write_hw_platform -fixed -include_bit -force -file ${hierarchy_to_test}_${wrapper_module}_${idx}.xsa
+	write_hw_platform -fixed -include_bit -force -file ${xsa_file}
 } else {
 	puts "WARNING: since this script was run without the -block flag set, user is responsible for exporting hardware"
 	puts "    the following command can be used to run it:"
-	puts "    write_hw_platform -fixed -include_bit -file ${hierarchy_to_test}_${wrapper_module}.xsa"
+	puts "    write_hw_platform -fixed -include_bit -file ${xsa_file}"
 }

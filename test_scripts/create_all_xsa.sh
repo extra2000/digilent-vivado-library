@@ -7,8 +7,6 @@ vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodALS
 vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodAMP2
 vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodAQS
 vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodBLE
-vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodBLE.
-vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodBLE.
 vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodBT2
 vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodCAN
 vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodCLS

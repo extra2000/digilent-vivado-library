@@ -30,10 +30,10 @@ proc llast {my_list} {
 # the final argument is the name of the hierarchy to test, which must match a folder in the repo's hierarchies directory
 set hierarchy [llast $argv]
 
-# capture the xsa file path, optionally provided with the -xsa flag, default to the highest-numbered xsa matching this pattern: (repo)/test_scripts/ws/hw/(hierarchy)_design_1_wrapper_*.xsa
+# capture the xsa file path, optionally provided with the -xsa flag, default to the highest-numbered xsa matching this pattern: (repo)/test_scripts/handoff/(hierarchy)_design_1_wrapper_*.xsa
 set xsa_index [lsearch -exact $argv "-xsa"]
 if {$xsa_index eq -1} {
-    set xsa_list [glob [file join ${script_dir} ws hw ${hierarchy}_design_1_wrapper_*.xsa]]
+    set xsa_list [glob [file join ${script_dir} handoff ${hierarchy}_design_1_wrapper_*.xsa]]
     set xsa_list [lsort $xsa_list]
 	set xsa_file [llast $xsa_list]
 } else {

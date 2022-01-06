@@ -28,7 +28,8 @@ proc connect_${hierarchy} {hierarchy_name} {
     }
 
     set axi_interfaces [list \
-        ${hierarchy_name}/S_AXI_QSPI \
+        ${hierarchy_name}/S_AXI_GPIO \
+        ${hierarchy_name}/S_AXI_SPI \
     ]
     set master_interfaces [processor_model::make_interconnect [llength ${axi_interfaces}] ${clock} ${reset}]
     foreach master_interface $master_interfaces axi_interface $axi_interfaces {

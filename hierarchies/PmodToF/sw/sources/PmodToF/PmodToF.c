@@ -56,6 +56,10 @@ XGpio gpio;
 CALIBDATA calib;
 SERIALNODATA serialNo ;
 
+/* ------------------------------------------------------------ */
+/*		Global variables	                                    */
+/* ------------------------------------------------------------ */
+char szMsg[400];
 
 /* ------------------------------------------------------------ */
 /*					Local functions used for calibration        */

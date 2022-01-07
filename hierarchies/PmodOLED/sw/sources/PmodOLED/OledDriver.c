@@ -48,9 +48,10 @@
 /* ------------------------------------------------------------ */
 
 #include "PmodOLED.h"
-#include "ChrFont0.c"
-#include "FillPat.c"
 #include "sleep.h"
+
+extern const uint8_t rgbOledFont0[];
+extern const uint8_t rgbFillPat[];
 
 /* ------------------------------------------------------------ */
 /*              Local Symbol Definitions                        */
@@ -529,7 +530,7 @@ void OLED_ClearBuffer(PmodOLED *InstancePtr)
 void OLED_Update(PmodOLED *InstancePtr)
 {
     int      ipag;
-    int      icol;
+//    int      icol;
     uint8_t *pb;
 
     pb = InstancePtr->OLEDState.rgbOledBmp;

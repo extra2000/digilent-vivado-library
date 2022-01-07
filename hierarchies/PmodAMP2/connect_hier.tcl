@@ -15,6 +15,14 @@ proc connect_${hierarchy} {hierarchy_name} {
     set reset [processor_model::make_reset ${clock}]
     connect_bd_net [get_bd_pins ${hierarchy_name}/s_axi_aresetn] [get_bd_pins ${reset}]
 
+    set interrupts [list \
+        ${hierarchy_name}/timer_interrupt \
+    ]
+    set concat_pins [processor_model::make_interrupts [llength ${interrupts}]]
+    foreach interrupt $interrupts concat_pin $concat_pins {
+        connect_bd_net -boundary_type upper [get_bd_pins ${interrupt}] [get_bd_pins ${concat_pin}]
+    }
+
     set axi_interfaces [list \
         ${hierarchy_name}/S_AXI_GPIO \
         ${hierarchy_name}/S_AXI_PWM \

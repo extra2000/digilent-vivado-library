@@ -125,6 +125,7 @@ proc create_hier_cell_PmodAMP2_0 { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir I -type clk s_axi_aclk
   create_bd_pin -dir I -type rst s_axi_aresetn
+  create_bd_pin -dir O -type intr timer_interrupt
 
   # Create instance: PWM_0, and set properties
   set PWM_0 [ create_bd_cell -type ip -vlnv digilentinc.com:IP:PWM PWM_0 ]
@@ -146,6 +147,7 @@ proc create_hier_cell_PmodAMP2_0 { parentCell nameHier } {
   set pmod_bridge_0 [ create_bd_cell -type ip -vlnv digilentinc.com:ip:pmod_bridge pmod_bridge_0 ]
   set_property -dict [ list \
    CONFIG.Bottom_Row_Interface {Disabled} \
+   CONFIG.PMOD {ja} \
  ] $pmod_bridge_0
 
   # Create instance: xlconcat_0, and set properties
@@ -167,6 +169,7 @@ proc create_hier_cell_PmodAMP2_0 { parentCell nameHier } {
   # Create port connections
   connect_bd_net -net PWM_0_pwm [get_bd_pins PWM_0/pwm] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlconcat_0/In1]
+  connect_bd_net -net axi_timer_0_interrupt [get_bd_pins timer_interrupt] [get_bd_pins axi_timer_0/interrupt]
   connect_bd_net -net pwm_axi_aclk_0_1 [get_bd_pins s_axi_aclk] [get_bd_pins PWM_0/pwm_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_timer_0/s_axi_aclk]
   connect_bd_net -net pwm_axi_aresetn_0_1 [get_bd_pins s_axi_aresetn] [get_bd_pins PWM_0/pwm_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_timer_0/s_axi_aresetn]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins pmod_bridge_0/in_top_gpio_o] [get_bd_pins xlconcat_0/dout]

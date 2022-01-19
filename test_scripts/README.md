@@ -42,6 +42,8 @@ The hierarchies themselves are documented in the [hierarchies README](../hierarc
 
 1. At this point, the system project can be launched in hardware via the Assistant pane (note that the Pmod connects to the port listed alphabetically, typically JA)
 
+Don't forget to clean up the created project by either deleting it in the filesystem or by opening it in vivado and running `close_project -delete` in the TCL console.
+
 ----
 ## Usage
 

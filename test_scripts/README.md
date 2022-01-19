@@ -23,7 +23,7 @@ The hierarchies themselves are documented in the [hierarchies README](../hierarc
     > `vivado -mode batch -source create_xsa.tcl -tclargs -block PmodAD1`
 
 1. Once complete, observe that there is now a project named project_PmodAD1_0:
-    > `ls ./proj/project_PmodAD1_0/project_PmodAD1_0.xpr`
+    > `ls ../../vivado-library-test-projects/project_PmodAD1_0/project_PmodAD1_0.xpr`
 
 1. Observe that the XSA file has been produced:
 
@@ -53,6 +53,8 @@ Once complete, it exports an XSA file to the working directory.
   * `-block`: Set this flag to block further execution of the TCL process until a bitstream has been generated and an XSA exported. An XSA is only exported if this is specified. If not specified, the command that can be used to export is printed after runs are started
   * `-board (board)`: Specifies the FPGA development board to target. 
   * `-jobs (num)`: Specifies the number of jobs to use while building the project. see 'help launch_runs' for more info
+  * `-handoff-dir (path)`: Sets the directory the xsa is to be exported into. The default is `test_scripts/handoff`
+  * `-proj-dir (path)`: Sets the directory the temporary project will be created in, the default is `test_scripts/../../vivado-library-test-projects`
   * `(hierarchy)`: The final argument of the list, this is the name of the hierarchy that will be included
 * Invocation (TCL): `set argv "-block -jobs 12 PmodAD1"; source test.tcl`
 * Invocation (Bash/other): `vivado -mode batch -source create_xsa.tcl -tclargs -block -jobs 12 PmodAD1`

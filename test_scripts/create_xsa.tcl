@@ -38,6 +38,14 @@ if {$handoff_dir_idx eq -1} {
 	set handoff_dir [file normalize [lindex $argv [expr $handoff_dir_idx + 1]]]
 }
 
+# check for a proj-dir flag, which sets the directory the temporary project will be created in, the default is test_scripts/../../vivado-library-test-projects
+set project_dir_idx [lsearch -exact $argv "-proj-dir"]
+if {$project_dir_idx eq -1} {
+	set project_dir [file normalize [file join $script_dir .. .. "vivado-library-test-projects"]]
+} else {
+	set project_dir [file normalize [lindex $argv [expr $project_dir_idx + 1]]]
+}
+
 # the final argument is the name of the hierarchy to test, which must match a folder in the repo's hierarchies directory
 set hierarchy_to_test [lindex $argv [expr [llength $argv] - 1]]
 
@@ -45,7 +53,6 @@ set hierarchy_to_test [lindex $argv [expr [llength $argv] - 1]]
 
 # choose an unused project name (note that `close_project -delete` can be used to clean up existing projects)
 set project_name "project_${hierarchy_to_test}"
-set project_dir [file join $script_dir "proj"]
 set idx 0
 while {[file exists [file join $project_dir ${project_name}_${idx}]]} {incr idx}
 set project_name ${project_name}_${idx}

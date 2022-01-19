@@ -63,10 +63,15 @@ It should be noted that create_xsa.tcl does not clean up the project that it cre
 ----
 
 `create_sw.xsct.tcl` is intended to be run in the Vitis XSCT console and accepts several arguments through an `argv` list.
-It creates a hardware platform, then creates a system project and application project for each of the example software projects for the specified hierarchy. Additional configuration of the application project is performed to support any additional stuff the example needs (math library for example). Each of the projects are built.
+
+Note, it is recommended to not create your workspace within the vivado-library repo, since Vivado scans all directories within it when refreshing the IP repo.
+
+The script creates a hardware platform, then creates a system project and application project for each of the example software projects for the specified hierarchy. Additional configuration of the application project is performed to support any additional stuff the example needs (math library for example). Each of the projects are built.
 
 * Arguments:
-  * `-xsa (xsa path)`: Specifies the path to the XSA file that the hardware platform should be created from. By default, the highest-numbered XSA file that matches the pattern `(test_scripts)/ws/hw/(hierarchy)_design_1_wrapper_*` is used.
+  * `-xsa (xsa path)`: Specifies the path to the XSA file that the hardware platform should be created from. By default, the highest-numbered XSA file that matches the pattern `(hierarchy)_design_1_wrapper_*` found the handoff_dir directory is used.
+  * `-handoff-dir`: Specifies a path to a directory containing a set of xsa files from multiple hardware builds, from which one matching the pattern `(hierarchy)_design_1_wrapper_*` is chosen. Ignored if -xsa is used. Defaults to a `handoff` directory in the same folder as the script.
+  * `(hierarchy)`: The final argument of the list, this is the name of the hierarchy that will be included.
 
 Some Pmods may provide multiple software examples, in which case a system and application for each of them is created, sharing a single hardware platform.
 

@@ -30,10 +30,18 @@ proc llast {my_list} {
 # the final argument is the name of the hierarchy to test, which must match a folder in the repo's hierarchies directory
 set hierarchy [llast $argv]
 
+# capture the optional handoff_dir directory path, the directory containing a set of xsas from multiple hw builds. this is only used if the -xsa flag is not specified, and defaults to a "handoff" directory in the same folder as this script.
+set handoff_dir_index [lsearch -exact $argv "-handoff-dir"]
+if {$xsa_index eq -1} {
+    set handoff_dir [file join ${script_dir} handoff]
+} else {
+	set handoff_dir [lindex $argv [expr $xsa_index + 1]]
+}
+
 # capture the xsa file path, optionally provided with the -xsa flag, default to the highest-numbered xsa matching this pattern: (repo)/test_scripts/handoff/(hierarchy)_design_1_wrapper_*.xsa
 set xsa_index [lsearch -exact $argv "-xsa"]
 if {$xsa_index eq -1} {
-    set xsa_list [glob [file join ${script_dir} handoff ${hierarchy}_design_1_wrapper_*.xsa]]
+    set xsa_list [glob [file join ${handoff_dir} ${hierarchy}_design_1_wrapper_*.xsa]]
     set xsa_list [lsort $xsa_list]
 	set xsa_file [llast $xsa_list]
 } else {

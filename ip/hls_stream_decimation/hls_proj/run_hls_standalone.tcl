@@ -9,7 +9,7 @@ set SOLUTION_NAME "sol1"
 set SOLUTION_PART "xc7z020-clg400-1"
 set SOLUTION_CLKP 8.00
 # MAJOR.MINOR.REVISION
-set VERSION "1.0.0"
+set VERSION "1.0.1"
 set DISPLAY_NAME "AXI4-Stream Decimator"
 set DESCRIPTION "Configurable decimation for AXI4-Stream"
 set VENDOR "digilentinc.com"
@@ -24,6 +24,7 @@ open_project -reset $PROJ_NAME
 # ------------------------------------------------------------------------------
 add_files "${SOURCE_DIR}/StreamDecimate.cpp" 
 add_files -tb "${SOURCE_DIR}/StreamDecimateTest.cpp"
+add_files -tb "${SOURCE_DIR}/StreamDecimateTest.h"
 
 # ------------------------------------------------------------------------------
 # Create Project and Solution

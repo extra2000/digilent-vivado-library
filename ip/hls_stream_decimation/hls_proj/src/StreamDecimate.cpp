@@ -42,31 +42,36 @@
 typedef ap_axiu<32,0,0,0> interface_t;
 typedef hls::stream<interface_t> stream_t;
 
-void StreamDecimate(ap_uint<32>& axilDecimationFactor, ap_uint<32>& axilPacketLength,
+void StreamDecimate(ap_uint<32>& axil,
 		stream_t& axisStreamIn, stream_t& axisStreamOut) {
-	#pragma HLS INTERFACE s_axilite port=axilDecimationFactor
-	#pragma HLS INTERFACE s_axilite port=axilPacketLength
-	#pragma HLS INTERFACE ap_ctrl_none port=return
+	#pragma HLS INTERFACE s_axilite port=axil
+	#pragma HLS INTERFACE s_axilite port=return
 	#pragma HLS INTERFACE axis register_mode=both port=axisStreamIn
 	#pragma HLS INTERFACE axis register_mode=both port=axisStreamOut
 
 	static ap_uint<32> regSamplesDropped = 1;
 	static ap_uint<32> regPacketCount = 0;
 
-	ap_axiu<32,0,0,0> axisData = axisStreamIn.read();
-
-	if(regSamplesDropped < axilDecimationFactor) {
-		regSamplesDropped++;
-	}
-	else {
-		regPacketCount++;
+	if(axil.range(0, 0)) {
 		regSamplesDropped = 1;
-		if(regPacketCount >= axilPacketLength) {
-			regPacketCount = 0;
-			axisData.last = true;
-		}else{
-			axisData.last = false;
+		regPacketCount = 0;
+	} else {
+		ap_axiu<32,0,0,0> axisData = axisStreamIn.read();
+
+		if(regSamplesDropped < axil.range(31, 16)) {
+			regSamplesDropped++;
 		}
-		axisStreamOut.write(axisData);
+		else {
+			regPacketCount++;
+			regSamplesDropped = 1;
+
+			if(regPacketCount >= axil.range(15, 1) && axil.range(15, 1) != 0) {
+				regPacketCount = 0;
+				axisData.last = true;
+			}else{
+				axisData.last = false;
+			}
+			axisStreamOut.write(axisData);
+		}
 	}
 }

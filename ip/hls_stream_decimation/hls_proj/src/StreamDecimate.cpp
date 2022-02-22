@@ -42,9 +42,9 @@
 typedef ap_axiu<32,0,0,0> interface_t;
 typedef hls::stream<interface_t> stream_t;
 
-void StreamDecimate(ap_uint<32>& axil,
+void StreamDecimate(ap_uint<32>& axilConfig,
 		stream_t& axisStreamIn, stream_t& axisStreamOut) {
-	#pragma HLS INTERFACE s_axilite port=axil
+	#pragma HLS INTERFACE s_axilite port=axilConfig
 	#pragma HLS INTERFACE s_axilite port=return
 	#pragma HLS INTERFACE axis register_mode=both port=axisStreamIn
 	#pragma HLS INTERFACE axis register_mode=both port=axisStreamOut
@@ -52,20 +52,20 @@ void StreamDecimate(ap_uint<32>& axil,
 	static ap_uint<32> regSamplesDropped = 1;
 	static ap_uint<32> regPacketCount = 0;
 
-	if(axil.range(0, 0)) {
+	if(axilConfig.range(0, 0)) {
 		regSamplesDropped = 1;
 		regPacketCount = 0;
 	} else {
 		ap_axiu<32,0,0,0> axisData = axisStreamIn.read();
 
-		if(regSamplesDropped < axil.range(31, 16)) {
+		if(regSamplesDropped < axilConfig.range(31, 16)) {
 			regSamplesDropped++;
 		}
 		else {
 			regPacketCount++;
 			regSamplesDropped = 1;
 
-			if(regPacketCount >= axil.range(15, 1) && axil.range(15, 1) != 0) {
+			if(regPacketCount >= axilConfig.range(15,1) && axilConfig.range(15,1) != 0) {
 				regPacketCount = 0;
 				axisData.last = true;
 			}else{

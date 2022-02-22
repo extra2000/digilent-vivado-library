@@ -10,21 +10,21 @@ int main() {
 
 	ap_uint<32> result_signal[5][100];
 	ap_uint<32> result_tlast[5][5][100];
-	ap_uint<32> reset;
+	ap_uint<32> config;
 	for(int i = 0; i < SIZE(input_decimation_factor); i++) {
 		for(int j = 0; j < SIZE(input_packet_length); j++) {
 			// Set AXI4-Lite Parameters
 			ap_uint<32> index_result = 0;
-			reset.range(0,0) = 1;
-			reset.range(31, 16) = input_decimation_factor[i];
-			reset.range(15, 1) = input_packet_length[j];
-			StreamDecimate(reset, stream_in, stream_out);
-			reset.range(0,0) = 0;
+			config.range(0,0) = 1;
+			config.range(31, 16) = input_decimation_factor[i];
+			config.range(15, 1) = input_packet_length[j];
+			StreamDecimate(config, stream_in, stream_out);
+			config.range(0,0) = 0;
 			for(int k = 0 ; k < SIZE(input_signal); k++) {
 				// Send AXI4-Stream data
 				payload.data = input_signal[k];
 				stream_in.write(payload);
-				StreamDecimate(reset, stream_in, stream_out);
+				StreamDecimate(config, stream_in, stream_out);
 				if(!stream_out.empty()) {
 					result = stream_out.read();
 					result_signal[i][index_result] = result.data;

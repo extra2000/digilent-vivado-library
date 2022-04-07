@@ -428,7 +428,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>bb62e227</spirit:value>
+            <spirit:value>204d70bb</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1230,10 +1230,15 @@
       <spirit:file>
         <spirit:name>constr/ConstrZmodDAC1411_ooc.xdc</spirit:name>
         <spirit:userFileType>xdc</spirit:userFileType>
+        <spirit:userFileType>USED_IN_out_of_context</spirit:userFileType>
       </spirit:file>
       <spirit:file>
         <spirit:name>constr/ConstrsZmodDAC1411.xdc</spirit:name>
         <spirit:userFileType>xdc</spirit:userFileType>
+        <spirit:define>
+          <spirit:name>processing_order</spirit:name>
+          <spirit:value>late</spirit:value>
+        </spirit:define>
       </spirit:file>
       <spirit:file>
         <spirit:name>src/PkgZmodDAC.vhd</spirit:name>
@@ -1434,13 +1439,13 @@
       </xilinx:taxonomies>
       <xilinx:displayName>ZmodAWGController_v1_0</xilinx:displayName>
       <xilinx:definitionSource>package_project</xilinx:definitionSource>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:coreRevision>2</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>natinst.com:user:ZmodDAC1411_Controller:1.0</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>natinst.com:user:ZmodAWG1411_Controller:1.0</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>natinst.com:user:ZmodAWG_1411_Controller:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2021-09-09T15:56:13Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2022-04-07T08:39:05Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1facf044_ARCHIVE_LOCATION">c:/vivado_projects/simzmoddac</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@6f0f2a10_ARCHIVE_LOCATION">c:/vivado_projects/simzmoddac</xilinx:tag>
@@ -1859,12 +1864,22 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@5aae2c0f_ARCHIVE_LOCATION">d:/Github/vivado-library/ip/Zmods/ZmodAWG_1411_Controller</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@1c210f1b_ARCHIVE_LOCATION">d:/Github/vivado-library/ip/Zmods/ZmodAWG_1411_Controller</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7a37f2b5_ARCHIVE_LOCATION">d:/Github/vivado-library/ip/Zmods/ZmodAWG_1411_Controller</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6c001800_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1820bc5a_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2daf95ee_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6824f7d9_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@275f645b_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@73068491_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7d1ccb81_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@b09087c_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@64e62dfe_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@731fbf6e_ARCHIVE_LOCATION">d:/Workspace/Vivado/eclypse_z7/hw/repo/vivado-library/ip/Zmods/ZmodAWGController</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
-      <xilinx:xilinxVersion>2019.1</xilinx:xilinxVersion>
+      <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="16694666"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="219a50de"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="db3f55c9"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="a9a5fb8d"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="d4184007"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="15eb61f5"/>

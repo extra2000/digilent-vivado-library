@@ -41,13 +41,13 @@ port (
     cExtCh2LgMultCoef : OUT STD_LOGIC_VECTOR (17 downto 0);
     cExtCh2LgAddCoef : OUT STD_LOGIC_VECTOR (17 downto 0);
     cExtCh2HgAddCoef : OUT STD_LOGIC_VECTOR (17 downto 0);
-    sCh1GainConfig : OUT STD_LOGIC;
-    sCh2GainConfig : OUT STD_LOGIC;
+    lReset_n: OUT STD_LOGIC;
     sCh1CouplingConfig : OUT STD_LOGIC;
     sCh2CouplingConfig : OUT STD_LOGIC;
+    sCh1GainConfig : OUT STD_LOGIC;
+    sCh2GainConfig : OUT STD_LOGIC;
     sEnableAcquisition : OUT STD_LOGIC;
     sTestMode : OUT STD_LOGIC;
-    lReset_n: OUT STD_LOGIC;
     s_axi_control_AWVALID : IN STD_LOGIC;
     s_axi_control_AWREADY : OUT STD_LOGIC;
     s_axi_control_AWADDR : IN STD_LOGIC_VECTOR (C_S_AXI_CONTROL_ADDR_WIDTH-1 downto 0);

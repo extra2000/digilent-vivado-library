@@ -1,0 +1,4 @@
+# ignore everything in workspace dir
+ws/*
+vitis_hls.log
+!ws/.keep

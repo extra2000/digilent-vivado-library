@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <spirit:vendor>digilent.com</spirit:vendor>
+  <spirit:library>user</spirit:library>
+  <spirit:name>ZmodScopeAXIConfiguration</spirit:name>
+  <spirit:version>1.0</spirit:version>
+  <spirit:busInterfaces>
+    <spirit:busInterface>
+      <spirit:name>s_axi_control</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm_rtl" spirit:version="1.0"/>
+      <spirit:slave>
+        <spirit:memoryMapRef spirit:memoryMapRef="s_axi_control"/>
+      </spirit:slave>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>AWADDR</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_AWADDR</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>AWVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_AWVALID</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>AWREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_AWREADY</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_WDATA</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WSTRB</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_WSTRB</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_WVALID</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>WREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_WREADY</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>BRESP</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_BRESP</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>BVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_BVALID</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>BREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_BREADY</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ARADDR</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_ARADDR</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ARVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_ARVALID</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>ARREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_ARREADY</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RDATA</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_RDATA</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RRESP</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_RRESP</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RVALID</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_RVALID</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RREADY</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_RREADY</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s_axi_control_rst_n</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="reset_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>RST</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_rst_n</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>POLARITY</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONTROL_RST_N.POLARITY" spirit:choiceRef="choice_list_9d8b0d81">ACTIVE_LOW</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>s_axi_control_clk</spirit:name>
+      <spirit:busType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="signal" spirit:name="clock_rtl" spirit:version="1.0"/>
+      <spirit:slave/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>CLK</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>s_axi_control_clk</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+      <spirit:parameters>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_BUSIF</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONTROL_CLK.ASSOCIATED_BUSIF">s_axi_control</spirit:value>
+        </spirit:parameter>
+        <spirit:parameter>
+          <spirit:name>ASSOCIATED_RESET</spirit:name>
+          <spirit:value spirit:id="BUSIFPARAM_VALUE.S_AXI_CONTROL_CLK.ASSOCIATED_RESET">s_axi_control_rst_n</spirit:value>
+        </spirit:parameter>
+      </spirit:parameters>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>ExtCh1Calib</spirit:name>
+      <spirit:displayName>ExtCh1Calib</spirit:displayName>
+      <spirit:busType spirit:vendor="natinst.com" spirit:library="user" spirit:name="ZmodScope_Calibration" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="natinst.com" spirit:library="user" spirit:name="ZmodScope_Calibration_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HgCoefMult</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh1HgMultCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>LgCoefMult</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh1LgMultCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>LgCoefAdd</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh1LgAddCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HgCoefAdd</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh1HgAddCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+    <spirit:busInterface>
+      <spirit:name>ExtCh2Calib</spirit:name>
+      <spirit:displayName>ExtCh2Calib</spirit:displayName>
+      <spirit:busType spirit:vendor="natinst.com" spirit:library="user" spirit:name="ZmodScope_Calibration" spirit:version="1.0"/>
+      <spirit:abstractionType spirit:vendor="natinst.com" spirit:library="user" spirit:name="ZmodScope_Calibration_rtl" spirit:version="1.0"/>
+      <spirit:master/>
+      <spirit:portMaps>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HgCoefMult</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh2HgMultCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>LgCoefMult</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh2LgMultCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>LgCoefAdd</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh2LgAddCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+        <spirit:portMap>
+          <spirit:logicalPort>
+            <spirit:name>HgCoefAdd</spirit:name>
+          </spirit:logicalPort>
+          <spirit:physicalPort>
+            <spirit:name>cExtCh2HgAddCoef</spirit:name>
+          </spirit:physicalPort>
+        </spirit:portMap>
+      </spirit:portMaps>
+    </spirit:busInterface>
+  </spirit:busInterfaces>
+  <spirit:memoryMaps>
+    <spirit:memoryMap>
+      <spirit:name>s_axi_control</spirit:name>
+      <spirit:addressBlock>
+        <spirit:name>reg0</spirit:name>
+        <spirit:baseAddress spirit:format="bitString" spirit:resolve="user" spirit:bitStringLength="32">0</spirit:baseAddress>
+        <spirit:range spirit:format="long" spirit:resolve="dependent" spirit:dependency="pow(2,(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONTROL_ADDR_WIDTH&apos;)) - 1) + 1)" spirit:minimum="4096" spirit:rangeType="long">4096</spirit:range>
+        <spirit:width spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONTROL_DATA_WIDTH&apos;)) - 1) + 1">32</spirit:width>
+        <spirit:usage>register</spirit:usage>
+      </spirit:addressBlock>
+    </spirit:memoryMap>
+  </spirit:memoryMaps>
+  <spirit:model>
+    <spirit:views>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
+        <spirit:displayName>Synthesis</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:language>VHDL</spirit:language>
+        <spirit:modelName>zmod_scope_axi_configuration</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagesynthesis_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>6c9e2b21</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
+        <spirit:displayName>Simulation</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
+        <spirit:language>VHDL</spirit:language>
+        <spirit:modelName>zmod_scope_axi_configuration</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>4aa20ff8</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_xpgui</spirit:name>
+        <spirit:displayName>UI Layout</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:xgui.ui</spirit:envIdentifier>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_xpgui_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>viewChecksum</spirit:name>
+            <spirit:value>7deff969</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+    </spirit:views>
+    <spirit:ports>
+      <spirit:port>
+        <spirit:name>s_axi_control_clk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_rst_n</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>SysClk100</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>ADC_SamplingClk</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sRstBusy</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sInitDoneADC</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sConfigError</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sInitDoneRelay</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sDataOverflow</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh1HgMultCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh1LgMultCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh1LgAddCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh1HgAddCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh2HgMultCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh2LgMultCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh2LgAddCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>cExtCh2HgAddCoef</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">17</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sCh1GainConfig</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sCh2GainConfig</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sCh1CouplingConfig</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sCh2CouplingConfig</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sEnableAcquisition</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>sTestMode</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>lReset_n</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_AWVALID</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_AWREADY</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_AWADDR</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONTROL_ADDR_WIDTH&apos;)) - 1)">6</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_WVALID</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_WREADY</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_WDATA</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONTROL_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_WSTRB</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="((spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONTROL_DATA_WIDTH&apos;)) / 8) - 1)">3</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">1</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_ARVALID</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_ARREADY</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_ARADDR</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONTROL_ADDR_WIDTH&apos;)) - 1)">6</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_RVALID</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_RREADY</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_RDATA</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long" spirit:resolve="dependent" spirit:dependency="(spirit:decode(id(&apos;MODELPARAM_VALUE.C_S_AXI_CONTROL_DATA_WIDTH&apos;)) - 1)">31</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_RRESP</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">1</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_BVALID</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_BREADY</spirit:name>
+        <spirit:wire>
+          <spirit:direction>in</spirit:direction>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+          <spirit:driver>
+            <spirit:defaultValue spirit:format="long">0</spirit:defaultValue>
+          </spirit:driver>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>s_axi_control_BRESP</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">1</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>STD_LOGIC_VECTOR</spirit:typeName>
+              <spirit:viewNameRef>xilinx_anylanguagesynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_anylanguagebehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+    </spirit:ports>
+    <spirit:modelParameters>
+      <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="INTEGER">
+        <spirit:name>C_S_AXI_CONTROL_ADDR_WIDTH</spirit:name>
+        <spirit:displayName>C S Axi Control Addr Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_CONTROL_ADDR_WIDTH">7</spirit:value>
+      </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="INTEGER">
+        <spirit:name>C_S_AXI_CONTROL_DATA_WIDTH</spirit:name>
+        <spirit:displayName>C S Axi Control Data Width</spirit:displayName>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_S_AXI_CONTROL_DATA_WIDTH">32</spirit:value>
+      </spirit:modelParameter>
+    </spirit:modelParameters>
+  </spirit:model>
+  <spirit:choices>
+    <spirit:choice>
+      <spirit:name>choice_list_9d8b0d81</spirit:name>
+      <spirit:enumeration>ACTIVE_HIGH</spirit:enumeration>
+      <spirit:enumeration>ACTIVE_LOW</spirit:enumeration>
+    </spirit:choice>
+  </spirit:choices>
+  <spirit:fileSets>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagesynthesis_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>constr/new/zmod_scope_axi_configuration.xdc</spirit:name>
+        <spirit:userFileType>xdc</spirit:userFileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/SyncAsync.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/ResetBridge.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/imports/vhdl/ZmodScopeConfig.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/imports/vhdl/ZmodScopeConfig_control_s_axi.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/ack_gen.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/req_gen.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/zmod_scope_axi_configuration.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_ca6d0314</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_anylanguagebehavioralsimulation_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>src/new/SyncAsync.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/ResetBridge.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/imports/vhdl/ZmodScopeConfig.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/imports/vhdl/ZmodScopeConfig_control_s_axi.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/ack_gen.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/req_gen.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+      <spirit:file>
+        <spirit:name>src/new/zmod_scope_axi_configuration.vhd</spirit:name>
+        <spirit:fileType>vhdlSource</spirit:fileType>
+      </spirit:file>
+    </spirit:fileSet>
+    <spirit:fileSet>
+      <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
+      <spirit:file>
+        <spirit:name>xgui/ZmodScopeAXIConfiguration_v1_0.tcl</spirit:name>
+        <spirit:fileType>tclSource</spirit:fileType>
+        <spirit:userFileType>CHECKSUM_7deff969</spirit:userFileType>
+        <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
+      </spirit:file>
+    </spirit:fileSet>
+  </spirit:fileSets>
+  <spirit:description>IP used to access Zmod Scope external calibration coefficients, gain settings, coupling settings and status flags via an AXI Lite interface</spirit:description>
+  <spirit:parameters>
+    <spirit:parameter>
+      <spirit:name>C_S_AXI_CONTROL_ADDR_WIDTH</spirit:name>
+      <spirit:displayName>C S Axi Control Addr Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXI_CONTROL_ADDR_WIDTH">7</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>C_S_AXI_CONTROL_DATA_WIDTH</spirit:name>
+      <spirit:displayName>C S Axi Control Data Width</spirit:displayName>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.C_S_AXI_CONTROL_DATA_WIDTH">32</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
+      <spirit:name>Component_Name</spirit:name>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">ZmodScopeAXIConfiguration_v1_0</spirit:value>
+    </spirit:parameter>
+  </spirit:parameters>
+  <spirit:vendorExtensions>
+    <xilinx:coreExtensions>
+      <xilinx:supportedFamilies>
+        <xilinx:family xilinx:lifeCycle="Production">virtex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qvirtex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">versal</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintex7l</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qkintex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qkintex7l</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">akintex7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">artix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">artix7l</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">aartix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qartix7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">zynq</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">qzynq</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">azynq</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">spartan7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">aspartan7</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">virtexu</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">zynquplus</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">virtexuplus</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">virtexuplusHBM</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">virtexuplus58g</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintexuplus</xilinx:family>
+        <xilinx:family xilinx:lifeCycle="Production">kintexu</xilinx:family>
+      </xilinx:supportedFamilies>
+      <xilinx:taxonomies>
+        <xilinx:taxonomy>/UserIP</xilinx:taxonomy>
+      </xilinx:taxonomies>
+      <xilinx:displayName>Zmod Scope AXI Configuration</xilinx:displayName>
+      <xilinx:definitionSource>package_project</xilinx:definitionSource>
+      <xilinx:vendorDisplayName>Digilent</xilinx:vendorDisplayName>
+      <xilinx:coreRevision>11</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2022-04-15T10:17:29Z</xilinx:coreCreationDateTime>
+      <xilinx:tags>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@54474098_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@893e2c5_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@647e86b8_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@220d6bd7_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@789b2998_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@16cfa714_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@75f3df4c_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@60ce26fe_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@58a15e13_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@70f992ac_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@443cc605_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7de9a410_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1645743e_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@b688585_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7e8da4c3_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@20519d5b_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@461c2e0a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@452aa153_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7d458467_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1b5379a8_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4393239e_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7367b13d_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2c4efa9a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5cefb1ee_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@731713bc_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5775bb_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@24ebef4a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@353b1f76_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2208aa01_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@70642114_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3297b654_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7f21f868_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@36d89767_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6e4dfa8f_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@667f53b9_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@252dfb37_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3ce2e4b1_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3a3b7f4_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@64e91db9_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2f4f0556_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2eec4383_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@691b8fd1_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7b5fe05e_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5cb0af0b_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3c777881_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@75b85fb0_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@78062fb0_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@77f03058_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@164a4c9_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6b85da14_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@215d213f_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@59ea64a5_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5cda28a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@24ff431d_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1f785dd_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4f265863_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@69fd5daa_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6cb6a6a5_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2e6f6124_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@ce019f3_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3c9ff52a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4948a524_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@f714416_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@329eb135_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@65559286_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@26032578_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7b0b7975_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6cf59daf_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3f02256e_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@14701d18_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5278adb3_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4611e4d7_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@62085120_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@771204ee_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4cd4eb35_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3a8ed6c3_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@249e2fdb_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@c7b2dd9_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@68472cf7_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@314b42ff_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@14864ab4_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@55ab8acd_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3470ee71_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@9273284_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@320b6765_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@292b5590_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6eef692a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1bdec33a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4c8b7f4b_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4080941a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3644d780_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@189cf738_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@765df42a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@321b6231_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@217a7da2_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@26b60b2d_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1d348cda_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@271fbf03_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@59d57f0c_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@29b1df89_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6b85c280_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6414526e_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1ba554df_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7395d936_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@9e35c46_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@da262c5_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@53bdfe0b_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@48114509_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1a6db737_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@402b5eef_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@13a905eb_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@55c3ba_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4d4d95cd_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7f099f5a_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@615ec8f_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5f69892e_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5954c0d8_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4b8b5628_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5e927ea0_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1e915281_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5574c957_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5c22ce29_ARCHIVE_LOCATION">d:/eclypse-wave-gen/zmod-scope-axi-configuration/zmod-scope-axi-configuration.srcs</xilinx:tag>
+      </xilinx:tags>
+    </xilinx:coreExtensions>
+    <xilinx:packagingInfo>
+      <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
+      <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="27b5553b"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="0e8e815f"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="2b26683d"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="7a53e6cb"/>
+      <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="6b549379"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="5dc5a75b"/>
+    </xilinx:packagingInfo>
+  </spirit:vendorExtensions>
+</spirit:component>

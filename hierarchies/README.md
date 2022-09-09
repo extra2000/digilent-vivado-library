@@ -14,7 +14,7 @@ The final section of this document (*Directory Structure - Details*), describes 
 These steps are also described by the [Adding a Hierarchical Block to a Vivado IPI Design](https://reference.digilentinc.com/learn/programmable-logic/tutorials/vivado-hierarchical-blocks/start) guide on the Digilent Wiki.
 
 1. Clone this repository, using the following command:
-   - `git clone --recursive https://github.com/Digilent/vivado-library.git`
+   - `git clone --recursive https://github.com/Digilent/vivado-library.git -b hierarchies`
    - Take note of the path to the cloned repository, it will be used later.
 1. Launch Vivado.
 1. Create or open the Vivado Project you wish to use the Hierarchy in.

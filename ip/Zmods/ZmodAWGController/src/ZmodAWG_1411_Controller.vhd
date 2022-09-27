@@ -186,7 +186,7 @@ begin
 -- de-assertion) in the SysClk100 domain, in the DacClk domain and in the
 -- DAC_InIO_Clk domain.
 
-InstSysReset : entity work.ResetBridge
+InstDacSysReset : entity work.ResetBridge
    Generic map(
       kPolarity => '0')
    Port map(
@@ -196,7 +196,7 @@ InstSysReset : entity work.ResetBridge
 
 asRst <= not asRst_n;
 
-InstSamplingReset : entity work.ResetBridge
+InstDacSamplingReset : entity work.ResetBridge
    Generic map(
       kPolarity => '0')
    Port map(
@@ -229,7 +229,7 @@ sZmodDAC_SetFS2 <= sCh2ScaleState;
 -- Synchronize the sChxScaleState signal into DAC_InIO_Clk clock domain
 -- The sCh1ScaleState will be used by the GainOffsetCalib module to apply the correct
 -- calibration coefficients.
-InstCh1ScaleSync: entity work.SyncBase
+InstDacCh1ScaleSync: entity work.SyncBase
    generic map (
       kResetTo => '0',
       kStages => 2)
@@ -241,7 +241,7 @@ InstCh1ScaleSync: entity work.SyncBase
       OutClk => DAC_InIO_Clk,
       oOut => cCh1ScaleState);   
       
-InstCh2ScaleSync: entity work.SyncBase
+InstDacCh2ScaleSync: entity work.SyncBase
    generic map (
       kResetTo => '0',
       kStages => 2)
@@ -387,7 +387,7 @@ end process;
 ------------------------------------------------------------------------------------------ 
  
 -- Synchronize sTestMode in the DAC_InIO_Clk domain.      
-InstTestModeSync: entity work.SyncBase
+InstDacTestModeSync: entity work.SyncBase
    generic map (
       kResetTo => '0',
       kStages => 2)

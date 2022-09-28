@@ -43,7 +43,7 @@
 -- The number of FFs in the synchronizer chain
 -- can be configured with kStages. The reset value for oOut can be configured
 -- with kResetTo. The asynchronous resets (aiReset, aoReset) are always 
--- active-high.
+-- active-high, and they should not be asserted independently.
 -- Changelog:
 --    2020-Dec-14: Changed the single asynchronous reset source (aReset)
 --    with 2 RSD reset (asynchronous assertin, synchronous de-assertion)

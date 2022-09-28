@@ -37,7 +37,7 @@ if {$DynScale == 1} {
 }
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {# Disable timing analysis on the InstADC_ClkODDR primitive reset input.}
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstADC_Clk**ODDR primitives; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
 puts_ipfile $f_xdc {set_false_path -fall_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkIO_ODDR*/R}]}
 puts_ipfile $f_xdc {set_false_path -fall_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkinODDR*/R}]}
 puts_ipfile $f_xdc {#}

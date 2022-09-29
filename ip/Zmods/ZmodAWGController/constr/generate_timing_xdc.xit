@@ -5,7 +5,7 @@ puts "Generating $f_xdc...."
 puts_ipfile $f_xdc {# Disable timing analysis for clock domain crossing double synchronizers, between clock domains}
 puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]}
 puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {# Overconstrain the metastable path in the otuput clock domain to 1/2 of the period, to leave enough margin for metastability to settle}
+puts_ipfile $f_xdc {# Overconstrain the metastable paths in the double synchronizer output clock domain to 1/2 of the period, to leave enough margin for metastability to settle}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDacSysReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDacSysReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] 5.0}
 puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDacSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDacSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDacSamplingReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
@@ -37,9 +37,9 @@ if {$DynScale == 1} {
 }
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstADC_Clk**ODDR primitives; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
-puts_ipfile $f_xdc {set_false_path -fall_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkIO_ODDR*/R}]}
-puts_ipfile $f_xdc {set_false_path -fall_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkinODDR*/R}]}
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstDac_Clk**ODDR primitives; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkIO_ODDR*/R}]}
+puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkinODDR*/R}]}
 puts_ipfile $f_xdc {#}
 
 puts_ipfile $f_xdc {create_generated_clock -name ZmodDAC_ClkIO -source [get_pins InstDAC_ClkIO_ODDR/C] -add -master_clock [get_clocks -of [get_ports DAC_Clk]] -divide_by 1 [get_ports ZmodDAC_ClkIO]}

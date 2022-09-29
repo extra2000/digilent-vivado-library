@@ -355,7 +355,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>9ca5eff0</spirit:value>
+            <spirit:value>56b50456</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -374,7 +374,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>6381b8cf</spirit:value>
+            <spirit:value>604be375</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -416,7 +416,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>262d75b8</spirit:value>
+            <spirit:value>37790d19</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -430,7 +430,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>927c30a6</spirit:value>
+            <spirit:value>8d55c1cf</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1552,7 +1552,7 @@
       <spirit:file>
         <spirit:name>src/ZmodScopeController.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_3ab71fb5</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_457c8dfc</spirit:userFileType>
         <spirit:userFileType>IMPORTED_FILE</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -1826,14 +1826,14 @@
         <xilinx:xpmLibrary>XPM_CDC</xilinx:xpmLibrary>
         <xilinx:xpmLibrary>XPM_MEMORY</xilinx:xpmLibrary>
       </xilinx:xpmLibraries>
-      <xilinx:coreRevision>1</xilinx:coreRevision>
+      <xilinx:coreRevision>11</xilinx:coreRevision>
       <xilinx:upgrades>
         <xilinx:canUpgradeFrom>natinst.com:user:ZmodADC1410_Controller:1.0</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>natinst.com:user:ZmodADC_Controller:1.0</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>natinst.com:user:ZmodScopeController:1.0</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>digilent.com:user:ZmodScopeController:1.0</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2022-08-05T00:14:41Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2022-09-29T15:56:39Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@fe99ea0_ARCHIVE_LOCATION">c:/Vivado_Projects/SimAD9648LLController/CreatedIP</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@7ecb3ff9_ARCHIVE_LOCATION">c:/Vivado_Projects/SimAD9648LLController/CreatedIP</xilinx:tag>
@@ -4720,12 +4720,265 @@
         <xilinx:tag xilinx:name="ui.data.coregen.df@651eb202_ARCHIVE_LOCATION">d:/Github/Eclypse-DDR-Streaming/hw/repo/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@2a5d9c44_ARCHIVE_LOCATION">d:/Github/Eclypse-DDR-Streaming/hw/repo/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@3d90ff87_ARCHIVE_LOCATION">d:/Github/Eclypse-DDR-Streaming/hw/repo/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@36b5bbe3_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@50e90869_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7213f038_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7249c45a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@23f23562_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@13d9a1a2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@fd894fe_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@572e3b16_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@24cc1261_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@68b43b3b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4b4ece94_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@50097ff7_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@39929674_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1c7c6669_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@66fecbdc_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@404b686b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4215c261_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4b310ead_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@677a59b0_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1bc7cb4_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1e438e5a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@52058fd0_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4dc386b6_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@27ac90fa_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@711e3c71_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5faade2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5d4d5a38_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4264b93b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@fd0f357_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@56ba4ac1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@218bd878_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@45696c28_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@17ee2dbc_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7bc91cd6_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1de62f6d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@25b312ab_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5be9704a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4ee936b1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5c08c0d5_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2f03c231_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1e4eac89_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@72907313_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@301ce98a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@19d5afa_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@11aff048_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4cb1d6a7_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6f19a65f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6c53012_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3233234d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@459c9092_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1e024f2e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@64c1ec3e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@65ae5312_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@caea1d5_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@146bb5ae_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1b8b2113_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@53e97ced_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6f38627_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@171cd05d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@356823af_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1217901_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@81a40f7_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@23abd6bb_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6e58a35e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@450301dd_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@35bd77fe_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4725245f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@526e14ee_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7e8ead6f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@121a3cc6_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6b88c52d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5de4b2ce_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@19d014c9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3c144f0f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4737b57e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@63433d4c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@215346_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5e1ba98d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@47e69fbe_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@195393_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3b9b92b3_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@56f98ac0_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ed30103_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5499ea5e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@27bfbbe0_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2fec4522_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@13370df9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@325fca44_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ce385de_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7ea31c7_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@31cdc0d2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@dd5099b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@726880ac_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@21715ff2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2b2045c9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@69688ef1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2b79cd0f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3e682611_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@74688052_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5ff3b1ff_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4b2acff1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5c67d180_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@518c6d24_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@63b77b4f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@32871e8a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@ee2e529_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@9bd38d5_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1adae6a1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1c6fac3c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@75ffb04d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@62dd8b38_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5e438cf_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2b203d1b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@481b7766_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2a001354_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@38ac973a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@10694088_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@212a6029_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@f8d93fb_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@67d7374d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5b0e6b22_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@58eb21e2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@a7c6996_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@58aa02d9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ab0e99c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@30ef40c1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@74854064_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@57a9a4de_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5cf8e34e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@197be1ca_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@666bb9cc_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5a5aeef1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@79262430_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6f2063d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4b0e9f4_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6661a531_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7a9297df_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3ffb05ff_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@427c6ab9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4c77f2aa_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3e4c3b52_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1057b433_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@f3a8327_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4ee76b9b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3aa7a534_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3a255a6c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4aabd1ca_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3439f6a9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3f55560_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6e7cebef_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4bc4cc54_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@d691535_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4c4e752a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4086ef30_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@74637cd3_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@71c65a15_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@76e3dd52_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@70714278_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7548275_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@15803ea1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4103c78b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7a2aa87b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@168630c7_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@217bfbf8_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@667a63c1_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@19074e56_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@34fd2915_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@181cdcb4_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@615f3922_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@37b0cae9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1c99b6b6_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1722cf2e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@e30c323_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@34eba90b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6d073001_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7e9c6412_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3bc8467e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@386ea7d5_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@66dcd04d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@609d9377_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2469c360_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@13db03a9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7752f301_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@57837e0_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1eb66fd2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@418de98_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@a748914_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4c9c80ae_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7f326ff8_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@11a9d880_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@65739bd5_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6d18d214_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1439193e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3b3cd4ef_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@52b11413_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@31c310ca_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@41619cd3_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4855929f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@49915a23_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@3968d2eb_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1730771a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4126103c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@725c0444_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5d50d2cf_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@24e9ae0_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@38d8d6db_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5aac4e16_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4de44239_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@56f35a4e_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@73b8422b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4cd19cf8_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5a78c9a4_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4b5f1f00_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4663a07a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1f2f7d3c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@8f94823_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1f7ca4d5_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@7f829ae2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@70ad1ca_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@269ea552_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@35b603c0_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4223361f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@ced5dc_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@703cec86_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@562344ca_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@687e843d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1744fe9c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@63306bb9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@dcd1a80_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@63df7192_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@154f5a87_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@761c170c_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5f812461_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@74aedfcc_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@43ef0817_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2c045a6a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@37ef2242_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1e69dda4_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2856ebb2_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1e49e825_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@39818fa_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@92e38f9_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@24c3f213_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1ecae8_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@5de6cd9b_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@14422ac8_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@49348583_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4c65b931_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@1a7aa07a_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@51dc30f_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6212b3e5_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@505cc69_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@465b2f6d_ARCHIVE_LOCATION">d:/Ionut/Zmod_AWG/vivado-library/ip/Zmods/ZmodScopeController</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2021.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="1522777d"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="ae7f7d7b"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="8cdf3404"/>
       <xilinx:checksum xilinx:scope="ports" xilinx:value="550f0532"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="f287e66d"/>
       <xilinx:checksum xilinx:scope="parameters" xilinx:value="e68367ba"/>

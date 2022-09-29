@@ -302,7 +302,7 @@ begin
 -- de-assertion) in the SysClk100 domain, in the ADC_SamplingClk domain and in
 -- the ADC_InClk domain.
 
-InstSysReset : entity work.ResetBridge
+InstAdcSysReset : entity work.ResetBridge
    Generic map(
       kPolarity => '0')
    Port map(
@@ -312,7 +312,7 @@ InstSysReset : entity work.ResetBridge
       
 asRst <= not asRst_n;
       
-InstSamplingReset : entity work.ResetBridge
+InstAdcSamplingReset : entity work.ResetBridge
    Generic map(
       kPolarity => '0')
    Port map(
@@ -608,7 +608,7 @@ InstADC_ClkOBUFDS : OBUFDS
 ------------------------------------------------------------------------------------------  
 
 -- Synchronize sTestMode in the ADC_SamplingClk domain.      
-InstTestModeSync: entity work.SyncBase
+InstAdcTestModeSync: entity work.SyncBase
    generic map (
       kResetTo => '0',
       kStages => 2)

@@ -2,17 +2,74 @@ set instname [current_inst]
 set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -processingOrder [list late] -force ConstrsZmodADC.xdc]
 puts "Generating $f_xdc...."
 
-puts_ipfile $f_xdc {# Disable timing analysis for clock domain crossing dedicated modules}
-puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[*]/D} -hier]}
-puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages*/PRE || NAME =~ *SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {# Disable timing analysis for clock domain crossing double synchronizers, between clock domains}
+puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]}
+puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *InstMMCM_LockSampingClkSync*/oSyncStages_reg[0]/D} -hier]}
 puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *InstHandshake*/*/CLR} -hier]}
+puts_ipfile $f_xdc {# Overconstrain the metastable paths in the double synchronizer output clock domain to 1/2 of the period, to leave enough margin for metastability to settle}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*SyncAsyncPushTBack*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*SyncAsyncPushTBack*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*SyncAsyncPushT/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *SyncReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *SyncReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstAdcSysReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstAdcSysReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the Sampling Clock period, which is the same.}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the Sampling Clock period, which is the same.}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneDco*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the Sampling Clock period, which is the same.}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncOverflow*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncOverflow*/oSyncStages_reg[1]/D} -hier] 5.0}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncCh2GainState*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncCh2GainState*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncCh2GainState*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstMMCM_LockSampingClkSync*/oSyncStages_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstMMCM_LockSampingClkSync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstMMCM_LockSampingClkSync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Disable timing analysis on ResetBridge components' asynchronous reset input.}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *SyncReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *SyncReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstAdcSysReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstAdcSysReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncBase component; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncAsync components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncOverflow*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncOverflow*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncCh2GainState*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncCh2GainState*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for HandshakeData components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*/oSyncStages*/PRE || NAME =~ *InstHandshakeInitDoneRelay*/oSyncStages*/CLR} -hier]}
+puts_ipfile $f_xdc {}
+
+puts_ipfile $f_xdc {# Disable timing analysis on the data path between clock domains, for the HandshakeBase components}
 puts_ipfile $f_xdc {set_false_path -from [get_cells -hier -filter {NAME =~ *InstHandshake*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *InstHandshake*/oData_reg[*]}]}
 puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {# Disable timing analysis on the InstADC_ClkODDR primitive reset input.}
-puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstADC_InClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -fall_to [get_pins -hier -filter {NAME=~ *InstADC_ClkODDR*/R}]}
+
+puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstADC_ClkODDR primitive; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
+puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstADC_InClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstADC_ClkODDR*/R}]}
 puts_ipfile $f_xdc {}
 puts_ipfile $f_xdc {#}
+
 puts_ipfile $f_xdc {create_generated_clock -name ZmodAdcClkIn -source [get_pins InstADC_ClkODDR/C] -add -master_clock [get_clocks -of [get_ports ADC_InClk]] -divide_by 1 [get_ports ZmodAdcClkIn_p]}
 puts_ipfile $f_xdc {}
 puts_ipfile $f_xdc {# DCO Clock period}
@@ -85,9 +142,5 @@ set_input_delay -clock [get_clocks ZmodDcoClk] -max -add_delay [expr $tskew_max 
 } 
 
 puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {set_false_path -fall_from [get_pins -hier -filter {NAME =~ *InstADC_InClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -to [get_pins -hier -filter {NAME=~ *InstADC_ClkODDR*/R}]}
-puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstADC_InClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -fall_to [get_pins -hier -filter {NAME=~ *InstADC_ClkODDR*/R}]}
-puts_ipfile $f_xdc {set_false_path -setup -rise_from [get_pins -hier -filter {NAME =~ *InstADC_InClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -fall_to [get_pins -hier -filter {NAME=~ *InstADC_ClkODDR*/R}]}
-
 
 close_ipfile $f_xdc

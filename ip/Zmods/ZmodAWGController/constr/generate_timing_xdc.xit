@@ -15,7 +15,7 @@ puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDacTestModeSync*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDacTestModeSync*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
 set DynScale [get_property PARAM_VALUE.kExtScaleConfigEn]
 puts "  kExtScaleConfigEn: $DynScale"
-if {$DynScale == 1} {
+if {$DynScale == true} {
 	puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDacCh1ScaleSync*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
 	puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstDacCh1ScaleSync*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstDacCh1ScaleSync*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
 	puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstDacCh2ScaleSync*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
@@ -31,7 +31,7 @@ puts_ipfile $f_xdc {}
 
 puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncBase components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
 puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstDacTestModeSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacTestModeSync*SyncAsync*/oSyncStages*/CLR} -hier]}
-if {$DynScale == 1} {
+if {$DynScale == true} {
 	puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstDacCh1ScaleSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacCh1ScaleSync*SyncAsync*/oSyncStages*/CLR} -hier]}
 	puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstDacCh2ScaleSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacCh2ScaleSync*SyncAsync*/oSyncStages*/CLR} -hier]}
 }

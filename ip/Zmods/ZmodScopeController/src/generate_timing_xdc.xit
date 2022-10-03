@@ -61,8 +61,9 @@ puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for Handshak
 puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*/oSyncStages*/PRE || NAME =~ *InstHandshakeInitDoneRelay*/oSyncStages*/CLR} -hier]}
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {# Disable timing analysis on the data path between clock domains, for the HandshakeBase components}
-puts_ipfile $f_xdc {set_false_path -from [get_cells -hier -filter {NAME =~ *InstHandshake*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *InstHandshake*/oData_reg[*]}]}
+puts_ipfile $f_xdc {# Set maximum delay on the data path between clock domains to 2 output clock cycles, for the HandshakeBase component}
+puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*/oData_reg[0]/C} -hier]]]}
+puts_ipfile $f_xdc {set_max_delay -datapath_only -from [get_cells -hier -filter {NAME =~ *InstHandshakeInitDoneRelay*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *InstHandshakeInitDoneRelay*/oData_reg[*]}] [expr {$ClkPeriod*2}]}
 puts_ipfile $f_xdc {}
 
 puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstADC_ClkODDR primitive; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}

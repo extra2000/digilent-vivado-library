@@ -97,6 +97,9 @@ architecture Behavioral of HandshakeData is
    signal oPushT, oPushT_q, oPushTBack, oPushTChanged : std_logic;
    attribute DONT_TOUCH : string;
    attribute DONT_TOUCH of aoReset: signal is "TRUE";
+   attribute direct_enable : string;
+   attribute direct_enable of iPushRising: signal is "yes";
+   attribute direct_enable of oPushTChanged: signal is "yes";
 begin
 
 DetectPush: process(aiReset, InClk)

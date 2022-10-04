@@ -2,6 +2,14 @@ set instname [current_inst]
 set f_xdc [add_ipfile -usedIn  [list synthesis implementation board ] -processingOrder [list late] -force ConstrsZmodADC.xdc]
 puts "Generating $f_xdc...."
 
+puts_ipfile $f_xdc {create_generated_clock -name ZmodAdcClkIn -source [get_pins InstADC_ClkODDR/C] -add -master_clock [get_clocks -of [get_ports ADC_InClk]] -divide_by 1 [get_ports ZmodAdcClkIn_p]}
+puts_ipfile $f_xdc {}
+puts_ipfile $f_xdc {# DCO Clock period}
+puts_ipfile $f_xdc {set tDCO [get_property CLKIN1_PERIOD [get_cells InstDataPath/MMCME2_ADV_inst]];}
+puts_ipfile $f_xdc {set tDCO_half [expr $tDCO/2];}
+puts_ipfile $f_xdc {create_clock -period $tDCO -name ZmodDcoClk -waveform "0.000 $tDCO_half" [get_ports ZmodDcoClk -prop_thru_buffers]}
+puts_ipfile $f_xdc {}
+
 puts_ipfile $f_xdc {# Disable timing analysis for clock domain crossing double synchronizers, between clock domains}
 puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]}
 puts_ipfile $f_xdc {set_false_path -through [get_pins -filter {NAME =~ *InstMMCM_LockSampingClkSync*/oSyncStages_reg[0]/D} -hier]}
@@ -16,19 +24,16 @@ puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
 puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
-puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the Sampling Clock period, which is the same.}
-puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the already-defined tDCO_half variable.}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncDcoFIFO_Reset*SyncAsync*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
 puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
 puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages_reg[0]/C} -hier]]]}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
-puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the Sampling Clock period, which is the same.}
-puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneDco*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
-puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the Sampling Clock period, which is the same.}
-puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstAdcSamplingReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]}
-puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]}
+puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the already-defined tDCO_half variable.}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneDco*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
+puts_ipfile $f_xdc {# Due to a problem during Design Initialization with MMCM output clock reporting, we cannot use this clock's period for constraints. Instead, we will use the already-defined tDCO_half variable.}
+puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncEnableAcquisitionDco*/oSyncStages_reg[1]/D} -hier] $tDCO_half}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages_reg[1]/D} -hier] 5.0}
 puts_ipfile $f_xdc {set_max_delay -from [get_pins -filter {NAME =~ *InstSyncAsyncOverflow*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *InstSyncAsyncOverflow*/oSyncStages_reg[1]/D} -hier] 5.0}
 puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages_reg[0]/C} -hier]]]}
@@ -70,14 +75,6 @@ puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstADC_
 puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstADC_InClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstADC_ClkODDR*/R}]}
 puts_ipfile $f_xdc {}
 puts_ipfile $f_xdc {#}
-
-puts_ipfile $f_xdc {create_generated_clock -name ZmodAdcClkIn -source [get_pins InstADC_ClkODDR/C] -add -master_clock [get_clocks -of [get_ports ADC_InClk]] -divide_by 1 [get_ports ZmodAdcClkIn_p]}
-puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {# DCO Clock period}
-puts_ipfile $f_xdc {set tDCO [get_property CLKIN1_PERIOD [get_cells InstDataPath/MMCME2_ADV_inst]];}
-puts_ipfile $f_xdc {set tDCO_half [expr $tDCO/2];}
-puts_ipfile $f_xdc {create_clock -period $tDCO -name ZmodDcoClk -waveform "0.000 $tDCO_half" [get_ports ZmodDcoClk -prop_thru_buffers]}
-puts_ipfile $f_xdc {}
 
 puts_ipfile $f_xdc {# Specify timing parameters for AD9648 in CMOS mode}
 set sampling_period [get_property PARAM_VALUE.kSamplingPeriod]

@@ -54,6 +54,47 @@
 --    aiReset should be de-assertd synchronously with the InClk rising edge, 
 --    while aoReset should be de-assertd synchronously with the OutClk rising 
 --    edge.
+-- Constraint Templates:
+--    In the constraint templates below, please replace
+--    <HandshakeData instantiation name> with the correct instantiation name of
+--    the HandshakeData module.
+--    This module needs the following types of constraints in the XDC file:
+--    - For the SyncAsync modules inside this module, the path between the
+--      input clock domain and output clock domain needs to not be analized:
+--      set_false_path -through [get_pins -filter {NAME =~ *SyncAsync*/oSyncStages_reg[0]/D} -hier]
+--
+--    - Also for the SyncAsync modules, the path between the flip-flops in
+--      the output clock domain needs to be overconstrained to half of the
+--      output clock period, to leave the other half for metastability to
+--      settle:
+--      set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncAsyncPushTBack*/oSyncStages_reg[0]/C} -hier]]]
+--      set_max_delay -from [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncAsyncPushTBack*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncAsyncPushTBack*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]
+--      set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier]]]
+--      set_max_delay -from [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncAsyncPushT/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncAsyncPushT/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]
+--
+--    - Also for the SyncAsync modules, we need to disable timing analysis on
+--      the assertion of reset. However, in this case, reset deassertion should
+--      still have its timing analyzed, since it is synchronous to a clock:
+--      set_false_path -rise_to [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*/oSyncStages*/PRE || NAME =~ *<HandshakeData instantiation name>*/oSyncStages*/CLR} -hier]
+--
+--    - For the ResetBridge module inside this module, the path between the
+--      flip-flops in the output clock domain needs to be overconstrained to
+--      half of the output clock period, to leave the other half for
+--      metastability to settle:
+--      set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncReset*SyncAsync*/oSyncStages_reg[0]/C} -hier]]]
+--      set_max_delay -from [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncReset*SyncAsync*/oSyncStages_reg[0]/C} -hier] -to [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncReset*SyncAsync*/oSyncStages_reg[1]/D} -hier] [expr {$ClkPeriod/2}]
+--
+--    - Also for the ResetBridge module, we need to disable timing analysis on
+--      the reset paths, for both its edges. This is necessary because the
+--      input reset of this module is considered to be fully asynchronous:
+--      set_false_path -to [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*SyncReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *<HandshakeData instantiation name>*SyncReset*SyncAsync*/oSyncStages*/CLR} -hier]
+--
+--    - For the data path between the input clock domain and the output clock
+--      domain, the maximum delay needs to be set to 2 output clock cycles, so
+--      the data sampled in the output clock domain is stable by the time
+--      oPushTChanged is asserted.
+--      set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *<HandshakeData instantiation name>*/oData_reg[0]/C} -hier]]]
+--      set_max_delay -datapath_only -from [get_cells -hier -filter {NAME =~ *<HandshakeData instantiation name>*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *<HandshakeData instantiation name>*/oData_reg[*]}] [expr {$ClkPeriod*2}]
 
 -- Changelog:
 --    2016-Jun-29: Fixed oValid not being a pulse.
@@ -63,6 +104,7 @@
 --    2022-Oct-03: Added direct_enable attribute to iPushRising and
 --    oPushTChanged, to make sure both the InClk and OutClk data latching FFs
 --    use actual clock enable (CE) pins.
+--    2022-Oct-04: Added Constraint Templates section to the header comments.
 -------------------------------------------------------------------------------
 
 

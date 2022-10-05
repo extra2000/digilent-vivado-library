@@ -29,19 +29,6 @@ puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstDacSampli
 puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstDacClkReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacClkReset*SyncAsync*/oSyncStages*/CLR} -hier]}
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncBase components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstDacTestModeSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacTestModeSync*SyncAsync*/oSyncStages*/CLR} -hier]}
-if {$DynScale == true} {
-	puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstDacCh1ScaleSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacCh1ScaleSync*SyncAsync*/oSyncStages*/CLR} -hier]}
-	puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstDacCh2ScaleSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstDacCh2ScaleSync*SyncAsync*/oSyncStages*/CLR} -hier]}
-}
-puts_ipfile $f_xdc {}
-
-puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstDac_Clk**ODDR primitives; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
-puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkIO_ODDR*/R}]}
-puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstDacClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstDAC_ClkinODDR*/R}]}
-puts_ipfile $f_xdc {#}
-
 puts_ipfile $f_xdc {create_generated_clock -name ZmodDAC_ClkIO -source [get_pins InstDAC_ClkIO_ODDR/C] -add -master_clock [get_clocks -of [get_ports DAC_Clk]] -divide_by 1 [get_ports ZmodDAC_ClkIO]}
 puts_ipfile $f_xdc {create_generated_clock -name ZmodDAC_ClkIn -source [get_pins InstDAC_ClkinODDR/C] -add -master_clock [get_clocks -of [get_ports DAC_Clk]] -divide_by 1 [get_ports ZmodDAC_ClkIn]}
 puts_ipfile $f_xdc {}

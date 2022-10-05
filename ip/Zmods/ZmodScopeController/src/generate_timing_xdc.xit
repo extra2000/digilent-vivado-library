@@ -52,29 +52,10 @@ puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstAdcSampli
 puts_ipfile $f_xdc {set_false_path -to [get_pins -filter {NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstADC_InClkReset*SyncAsync*/oSyncStages*/CLR} -hier]}
 puts_ipfile $f_xdc {}
 
-puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncBase component; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages*/PRE || NAME =~ *InstAdcTestModeSync*SyncAsync*/oSyncStages*/CLR} -hier]}
-puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for SyncAsync components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncInitDoneADC*/oSyncStages*/CLR} -hier]}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncFIFO_WrRstBusySysClk*/oSyncStages*/CLR} -hier]}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncOverflow*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncOverflow*/oSyncStages*/CLR} -hier]}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncCh1GainState*/oSyncStages*/CLR} -hier]}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstSyncAsyncCh2GainState*/oSyncStages*/PRE || NAME =~ *InstSyncAsyncCh2GainState*/oSyncStages*/CLR} -hier]}
-puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for HandshakeData components; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
-puts_ipfile $f_xdc {set_false_path -rise_to [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*/oSyncStages*/PRE || NAME =~ *InstHandshakeInitDoneRelay*/oSyncStages*/CLR} -hier]}
-puts_ipfile $f_xdc {}
-
 puts_ipfile $f_xdc {# Set maximum delay on the data path between clock domains to 2 output clock cycles, for the HandshakeBase component}
 puts_ipfile $f_xdc {set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_pins -filter {NAME =~ *InstHandshakeInitDoneRelay*/oData_reg[0]/C} -hier]]]}
 puts_ipfile $f_xdc {set_max_delay -datapath_only -from [get_cells -hier -filter {NAME =~ *InstHandshakeInitDoneRelay*/iData_int_reg[*]}] -to [get_cells -hier -filter {NAME=~ *InstHandshakeInitDoneRelay*/oData_reg[*]}] [expr {$ClkPeriod*2}]}
 puts_ipfile $f_xdc {}
-
-puts_ipfile $f_xdc {# Disable timing analysis on assertion of reset for InstADC_ClkODDR primitive; in this case, reset deassertion should still have its timing analyzed, since it is synchronous to a clock}
-puts_ipfile $f_xdc {set_false_path -rise_from [get_pins -hier -filter {NAME =~ *InstADC_InClkReset*/SyncAsyncx/oSyncStages_reg[1]/C}] -rise_to [get_pins -hier -filter {NAME=~ *InstADC_ClkODDR*/R}]}
-puts_ipfile $f_xdc {}
-puts_ipfile $f_xdc {#}
 
 puts_ipfile $f_xdc {# Specify timing parameters for AD9648 in CMOS mode}
 set sampling_period [get_property PARAM_VALUE.kSamplingPeriod]

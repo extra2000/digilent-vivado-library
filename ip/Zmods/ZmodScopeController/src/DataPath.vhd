@@ -363,7 +363,7 @@ InstMMCM_LockSampingClkSync: entity work.SyncAsync
       
 --InstMMCM_ClkInStoppedSync: entity work.SyncAsync
 --   port map (
---      aReset => '0',
+--      aoReset => '0',
 --      aIn => aMMCM_ClkStop,
 --      OutClk => ADC_SamplingClk,
 --      oOut => cMMCM_ClkStop);
@@ -479,7 +479,7 @@ InstSyncDcoFIFO_Reset : entity work.ResetBridge
    Port map(
       aRst => acRstFIFO, 
       OutClk => DcoBufgClk,
-      oRst => adRstFIFO);
+      aoRst => adRstFIFO);
 
 ProcFIFO_ResetInterval: process(adRstFIFO, DcoBufgClk)
 begin

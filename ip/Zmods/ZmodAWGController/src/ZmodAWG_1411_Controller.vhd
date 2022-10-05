@@ -192,7 +192,7 @@ InstDacSysReset : entity work.ResetBridge
    Port map(
       aRst => aRst_n, 
       OutClk => SysClk100,
-      oRst => asRst_n);
+      aoRst => asRst_n);
 
 asRst <= not asRst_n;
 
@@ -202,7 +202,7 @@ InstDacSamplingReset : entity work.ResetBridge
    Port map(
       aRst => aRst_n, 
       OutClk => DAC_InIO_Clk,
-      oRst => acRst_n);  
+      aoRst => acRst_n);  
 
 acRst <= not acRst_n;
 
@@ -212,7 +212,7 @@ InstDacClkReset : entity work.ResetBridge
    Port map(
       aRst => aRst_n, 
       OutClk => DAC_Clk,
-      oRst => adRst_n);  
+      aoRst => adRst_n);  
 
 adRst <= not adRst_n;            
 

@@ -4,6 +4,7 @@
 -- Author: Elod Gyorgy
 -- Original Project: HDMI input on 7-series Xilinx FPGA
 -- Date: 20 October 2014
+-- Last modification date: 05 October 2022
 --
 -------------------------------------------------------------------------------
 -- (c) 2014 Copyright Digilent Incorporated
@@ -40,13 +41,30 @@
 -- Purpose:
 -- This module is a reset-bridge. It takes a reset signal asynchronous to the 
 -- target clock domain (OutClk) and provides a safe asynchronous or synchronous
--- reset for the OutClk domain (oRst). The signal oRst is asserted immediately 
+-- reset for the OutClk domain (aoRst). The signal aoRst is asserted immediately 
 -- as aRst arrives, but is de-asserted synchronously with the OutClk rising
 -- edge. This means it can be used to safely reset any FF in the OutClk domain,
 -- respecting recovery time specs for FFs.
+-- The additional output register does not have placement and overly
+-- restrictive delay constraints, so that the tools can freely replicate it,
+-- if needed.
+-- Constraints:
+-- # Replace <InstResetBridge> with path to ResetBridge instance, keep rest unchanged
+-- # Begin scope to ResetBridge instance
+-- current_instance [get_cells <InstResetBridge>]
+-- # Reset input to the synchronizer must be ignored for timing analysis
+-- set_false_path -through [get_ports -scoped_to_current_instance aRst]
+-- # Constrain internal synchronizer paths to half-period, which is expected to be easily met with ASYNC_REG=true
+-- set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_ports -scoped_to_current_instance OutClk]]]
+-- set_max_delay -from [get_cells OutputFF*.SyncAsyncx/oSyncStages_reg[*]] -to [get_cells OutputFF*.SyncAsyncx/oSyncStages_reg[*]] [expr $ClkPeriod/2]
+-- current_instance -quiet
+-- # End scope to ResetBridge instance
 -- 
 -- Changelog:
 --    2020-Dec-14: Changed file name to ResetBridge
+--    2022-Oct-05: Replaced KEEP with keep_hierarchy. Added the possibility to
+--    specify the number of output synchronization stages. Added the
+--    possibility to specify an output FF, for replication purposes.
 -------------------------------------------------------------------------------
 
 
@@ -64,29 +82,55 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ResetBridge is
    Generic (
-      kPolarity : std_logic := '1');
+      kPolarity : std_logic := '1';
+      kStages : natural := 2;
+      kOutputFF : boolean := false); -- additional output FF for replication
    Port (
       aRst : in STD_LOGIC; -- asynchronous reset; active-high, if kPolarity=1
       OutClk : in STD_LOGIC;
-      oRst : out STD_LOGIC);
+      aoRst : out STD_LOGIC);
+   attribute keep_hierarchy : string;
+   attribute keep_hierarchy of ResetBridge : entity is "yes";
 end ResetBridge;
 
 architecture Behavioral of ResetBridge is
-signal aRst_int : std_logic;
-attribute KEEP : string;
-attribute KEEP of aRst_int: signal is "TRUE";
+signal aRst_int, aoRst_int : std_logic;
 begin
 
 aRst_int <= kPolarity xnor aRst; --SyncAsync uses active-high reset
 
-SyncAsyncx: entity work.SyncAsync
+OutputFF_Yes: if kOutputFF generate
+   SyncAsyncx: entity work.SyncAsync
+      generic map (
+         kResetTo => '1',
+         kStages => kStages) --use double FF synchronizer
+      port map (
+         aoReset => aRst_int,
+         aIn => '0',
+         OutClk => OutClk,
+         oOut => aoRst_int);
+
+-- Output FF that can be replicated by the tools, if needed
+   OutputFF: process (OutClk, aoRst_int)
+   begin
+      if (aoRst_int = '1') then
+         aoRst <= kPolarity;
+      elsif Rising_Edge(OutClk) then
+         aoRst <= not kPolarity;
+      end if;
+   end process;
+end generate OutputFF_Yes;
+
+OutputFF_No: if not kOutputFF generate
+   SyncAsyncx: entity work.SyncAsync
    generic map (
       kResetTo => kPolarity,
-      kStages => 2) --use double FF synchronizer
+      kStages => kStages) --use double FF synchronizer
    port map (
       aoReset => aRst_int,
       aIn => not kPolarity,
       OutClk => OutClk,
-      oOut => oRst);
+      oOut => aoRst);
+end generate OutputFF_No;
 
 end Behavioral;

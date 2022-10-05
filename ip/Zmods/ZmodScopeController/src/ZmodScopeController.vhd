@@ -308,7 +308,7 @@ InstAdcSysReset : entity work.ResetBridge
    Port map(
       aRst => aRst_n, 
       OutClk => SysClk100,
-      oRst => asRst_n);
+      aoRst => asRst_n);
       
 asRst <= not asRst_n;
       
@@ -318,7 +318,7 @@ InstAdcSamplingReset : entity work.ResetBridge
    Port map(
       aRst => aRst_n, 
       OutClk => ADC_SamplingClk,
-      oRst => acRst_n);
+      aoRst => acRst_n);
       
 acRst <= not acRst_n;
 
@@ -330,7 +330,7 @@ InstADC_InClkReset : entity work.ResetBridge
    Port map(
       aRst => aRst, 
       OutClk => ADC_InClk,
-      oRst => aiRst);  
+      aoRst => aiRst);  
  
 ------------------------------------------------------------------------------------------
 -- Relay configuration

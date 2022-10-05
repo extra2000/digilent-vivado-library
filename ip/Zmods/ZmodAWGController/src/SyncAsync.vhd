@@ -4,6 +4,7 @@
 -- Author: Elod Gyorgy
 -- Original Project: HDMI input on 7-series Xilinx FPGA
 -- Date: 20 October 2014
+-- Last modification date: 05 October 2022
 --
 -------------------------------------------------------------------------------
 -- (c) 2014 Copyright Digilent Incorporated
@@ -41,13 +42,25 @@
 -- This module synchronizes the asynchronous signal (aIn) with the OutClk clock
 -- domain and provides it on oOut. The number of FFs in the synchronizer chain
 -- can be configured with kStages. The reset value for oOut can be configured
--- with kResetTo. The asynchronous resets (aiReset, aoReset) are always 
--- active-high.
+-- with kResetTo. The asynchronous reset (aoReset) is always active-high.
 -- Changelog:
 --    2020-Dec-14: Changed the single asynchronous reset source (aReset)
---    with 2 RSD reset (asynchronous assertin, synchronous de-assertion)
---    reset sgnals (aiReset, aoReset).
+--    with an RSD reset (asynchronous assertion, synchronous de-assertion)
+--    signal (aoReset).
+--    2022-Oct-05: Added Constraints section to header. Added keep_hierarchy
+--    attribute to entity.
 --  
+-- Constraints:
+-- # Replace <InstSyncAsync> with path to SyncAsync instance, keep rest unchanged
+-- # Begin scope to SyncAsync instance
+-- current_instance [get_cells <InstSyncAsync>]
+-- # Input to synchronizer ignored for timing analysis
+-- set_false_path -through [get_ports -scoped_to_current_instance aIn]
+-- # Constrain internal synchronizer paths to half-period, which is expected to be easily met with ASYNC_REG=true
+-- set ClkPeriod [get_property PERIOD [get_clocks -of_objects [get_ports -scoped_to_current_instance OutClk]]]
+-- set_max_delay -from [get_cells oSyncStages_reg[*]] -to [get_cells oSyncStages_reg[*]] [expr $ClkPeriod/2]
+-- current_instance -quiet
+-- # End scope to SyncAsync instance
 -------------------------------------------------------------------------------
 
 
@@ -72,6 +85,8 @@ entity SyncAsync is
       aIn : in STD_LOGIC;
       OutClk : in STD_LOGIC;
       oOut : out STD_LOGIC);
+   attribute keep_hierarchy : string;
+   attribute keep_hierarchy of SyncAsync : entity is "yes";
 end SyncAsync;
 
 architecture Behavioral of SyncAsync is

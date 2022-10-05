@@ -232,7 +232,7 @@ SyncReset: entity work.ResetBridge
    port map (
       aRst => aoReset,
       OutClk => InClk,
-      oRst => iReset);
+      aoRst => iReset);
       
 ReadySignal: process(aiReset, InClk)
 begin

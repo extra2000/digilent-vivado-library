@@ -16,8 +16,8 @@ RELEASEDIR=../../../lib
 INCLUDEDIR=../../../include
 INCLUDES=-I./. -I${INCLUDEDIR}
 
-INCLUDEFILES=*.h
-LIBSOURCES=*.c
+INCLUDEFILES=$(wildcard *.h)
+LIBSOURCES=$(wildcard *.c)
 OUTS = $(addsuffix .o, $(basename $(wildcard *.c)))
 
 

@@ -2,7 +2,8 @@
 proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "Component_Name"
   #Adding Page
-  set Page_0 [ipgui::add_page $IPINST -name "Page 0"]
+  set Page_0 [ipgui::add_page $IPINST -name "Page 0" -display_name {IP Configuration}]
+  set_property tooltip {IP Configuration} ${Page_0}
   ipgui::add_param $IPINST -name "kRstActiveHigh" -parent ${Page_0}
   ipgui::add_param $IPINST -name "kGenerateSerialClk" -parent ${Page_0}
   ipgui::add_param $IPINST -name "kClkPrimitive" -parent ${Page_0} -layout horizontal
@@ -16,11 +17,14 @@ proc init_gui { IPINST } {
   ipgui::add_param $IPINST -name "kClkSwap" -parent ${Invert_TMDS_lanes}
 
 
-
+  #Manual editing: adding board_tab in XGUI
+  add_board_tab $IPINST
 }
 
-proc update_PARAM_VALUE.TMDS_BOARD_INTERFACE { PARAM_VALUE.TMDS_BOARD_INTERFACE } {
+proc update_PARAM_VALUE.TMDS_BOARD_INTERFACE { PARAM_VALUE.TMDS_BOARD_INTERFACE IPINST PROJECT_PARAM.BOARD } {
 	# Procedure called to update TMDS_BOARD_INTERFACE when any of the dependent parameters in the arguments change
+	set param_range [get_board_interface_param_range $IPINST -name "TMDS_BOARD_INTERFACE"]
+	set_property range $param_range ${PARAM_VALUE.TMDS_BOARD_INTERFACE}
 }
 
 proc validate_PARAM_VALUE.TMDS_BOARD_INTERFACE { PARAM_VALUE.TMDS_BOARD_INTERFACE } {

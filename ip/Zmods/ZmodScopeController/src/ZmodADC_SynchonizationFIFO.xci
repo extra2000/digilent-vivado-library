@@ -516,7 +516,7 @@
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.IPCONTEXT">IP_Flow</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.IPREVISION">5</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.MANAGED">TRUE</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.OUTPUTDIR">../../../../../../../../../../../ionut/review_tudor/march2022_changes/eclypse-z7-hw2/eclypse-z7-hw/proj/eclypse-z7-hw.tmp/zmodscopecontroller_v1_0_project/ZmodScopeController_v1_0_project.gen/sources_1/ip/ZmodADC_SynchonizationFIFO</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.OUTPUTDIR">../../../../../../../../../../github/eclypse-review/ddr-streaming-awg-scope/hw/proj/hw.tmp/zmodscopecontroller_v1_1_project/ZmodScopeController_v1_1_project.gen/sources_1/ip/ZmodADC_SynchonizationFIFO</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SELECTEDSIMMODEL"/>
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SHAREDDIR">.</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="RUNTIME_PARAM.SWVERSION">2021.1</spirit:configurableElementValue>

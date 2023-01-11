@@ -21,15 +21,15 @@ libs:
 
 include:
 	${CP} $(INCLUDEFILES) $(INCLUDEDIR)
-	if not exist ..\..\..\include\DEIPcK md ..\..\..\include\DEIPcK
-	if not exist ..\..\..\include\DEIPcK\utility md ..\..\..\include\DEIPcK\utility
-	if not exist ..\..\..\include\DEIPcK\utility\fpga md ..\..\..\include\DEIPcK\utility\fpga
-	if not exist ..\..\..\include\DEWFcK md ..\..\..\include\DEWFcK
-	if not exist ..\..\..\include\MRF24G md ..\..\..\include\MRF24G
-	if not exist ..\..\..\include\MRF24G\utility md ..\..\..\include\MRF24G\utility
-	if not exist ..\..\..\include\MRF24G\utility\ud_inc md ..\..\..\include\MRF24G\utility\ud_inc
-	if not exist ..\..\..\include\MRF24G\utility\ud_inc\internal md ..\..\..\include\MRF24G\utility\ud_inc\internal
-	if not exist ..\..\..\include\MRF24G\utility\ud_inc\shared md ..\..\..\include\MRF24G\utility\ud_inc\shared
+	mkdir -pv ..\..\..\include\DEIPcK
+	mkdir -pv ..\..\..\include\DEIPcK\utility
+	mkdir -pv ..\..\..\include\DEIPcK\utility\fpga
+	mkdir -pv ..\..\..\include\DEWFcK
+	mkdir -pv ..\..\..\include\MRF24G
+	mkdir -pv ..\..\..\include\MRF24G\utility
+	mkdir -pv ..\..\..\include\MRF24G\utility\ud_inc
+	mkdir -pv ..\..\..\include\MRF24G\utility\ud_inc\internal
+	mkdir -pv ..\..\..\include\MRF24G\utility\ud_inc\shared
 	cp DEIPcK/*.h $(INCLUDEDIR)/DEIPcK
 	cp DEIPcK/utility/*.h $(INCLUDEDIR)/DEIPcK/utility
 	cp DEIPcK/utility/fpga/*.h $(INCLUDEDIR)/DEIPcK/utility/fpga
